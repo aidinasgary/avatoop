@@ -2,6 +2,16 @@
 class Assets {
   Assets._();
 
+  static const String fontsDUBAIBOLD = 'assets/fonts/DUBAI-BOLD.TTF';
+  static const String fontsDUBAILIGHT = 'assets/fonts/DUBAI-LIGHT.TTF';
+  static const String fontsDUBAIMEDIUM = 'assets/fonts/DUBAI-MEDIUM.TTF';
+  static const String fontsDUBAIREGULAR = 'assets/fonts/DUBAI-REGULAR.TTF';
   static const String imagesImg = 'assets/images/img.png';
+  static const String imagesImg1 = 'assets/images/img_1.png';
+  static const String imagesImg2 = 'assets/images/img_2.png';
+  static const String imagesImg3 = 'assets/images/img_3.png';
+  static const String imagesImg4 = 'assets/images/img_4.png';
+  static const String imagesImg5 = 'assets/images/img_5.png';
+  static const String imagesProfile = 'assets/images/profile.png';
 
 }
