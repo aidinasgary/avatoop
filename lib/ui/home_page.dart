@@ -49,6 +49,7 @@ class _HomePageState extends State<HomePage> {
                     height: 1,
                   ),
                   //hot news
+                  // lorem
                   Container(
                     margin: EdgeInsets.all(20),
                     width: 350,
