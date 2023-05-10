@@ -2,6 +2,7 @@
 class Assets {
   Assets._();
 
+  static const String assets1672129479Esteghlal = 'assets/1672129479_esteghlal.jpg';
   static const String fontsDUBAIBOLD = 'assets/fonts/DUBAI-BOLD.TTF';
   static const String fontsDUBAILIGHT = 'assets/fonts/DUBAI-LIGHT.TTF';
   static const String fontsDUBAIMEDIUM = 'assets/fonts/DUBAI-MEDIUM.TTF';
