@@ -42,10 +42,11 @@ class _ErtebatScreenState extends State<ErtebatScreen> {
               child: Image(image: AssetImage('assets/images/img_1.png'))),
           Container(
             height: 100,
-            width: 200,
+            width: 250,
             child: Column(
               children: [
-                Text('آواتوپ، اولین وبسایت خبرگزاری صوتی ایران است که سعی دارد با استفاده از هوش مصنوعی، راحتی شما را در شنیدن اخبار ورزشی فراهم نماید،'),
+                Text('،آواتوپ، اولین وبسایت خبرگزاری صوتی ایران است که سعی دارد با استفاده از هوش مصنوعی، راحتی شما را در شنیدن اخبار ورزشی فراهم نماید',
+                style: TextStyle(fontSize: 11,fontWeight: FontWeight.w600,fontStyle: FontStyle.italic),textAlign: TextAlign.center,),
               ],
             ),
 

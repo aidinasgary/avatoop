@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:untitled16/ui/ertebat_screen.dart';
 import 'package:untitled16/ui/jadval_mosabeghat_screen.dart';
 import 'package:untitled16/ui/profile_screen.dart';
+import 'package:untitled16/widgets/custom_slider.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -33,12 +34,7 @@ class _HomePageState extends State<HomePage> {
               children: [
                 Column(
                   children: [
-                    Container(
-                      margin: EdgeInsets.only(top: 15),
-                      width: 450,
-                      height: 200,
-                      color: Colors.red,
-                    ),
+                  const CustomSlider(),
                     // hot news text
                     Padding(
                       padding: const EdgeInsets.all(8.0),
