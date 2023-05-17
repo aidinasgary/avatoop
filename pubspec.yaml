@@ -57,6 +57,10 @@ flutter:
       fonts:
         - asset: assets/fonts/dubai-medium.ttf
           weight: 700
+    - family: Dubai_b
+      fonts:
+        - asset: assets/fonts/dubai-bold.ttf
+          weight: 700
 
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
