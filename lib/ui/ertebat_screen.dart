@@ -13,40 +13,39 @@ class _ErtebatScreenState extends State<ErtebatScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('ارتباط با ما'),
+        title: Text('ارتباط با ما',
+          textDirection: TextDirection.rtl,
+          style: TextStyle(fontSize: 24, fontWeight: FontWeight.w600, fontFamily: 'dubai'),
+        ),
         centerTitle: true,
-        backgroundColor: Colors.indigo,
+        backgroundColor: Colors.blue,
       ),
       body: Column(
         children: [
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                Text(
-                  ' ارتباط با ما ',
-                  style: TextStyle(
-                      fontSize: 30, fontWeight: FontWeight.w500),
-                ),
-              ],
+          Container(
+            child: const Text("ارتباط با ما",
+              textDirection: TextDirection.rtl,
+              style: TextStyle(fontFamily: 'dubai', fontSize: 26),
             ),
+            padding: EdgeInsets.only(top: 12, left: 270),
           ),
           Container(
             color: Colors.black,
-            width: 350,
-            height: 1,
+            padding: EdgeInsets.only(top: 1.8),
+            margin: EdgeInsets.only(top: 5, right: 20, left: 20),
           ),
           Container(
-              margin:EdgeInsets.all(10),
-              child: Image(image: AssetImage('assets/images/img_1.png'))),
+            child: Image.asset('assets/images/img_1.png', width: 370),
+            margin: EdgeInsets.only(top: 10, bottom: 10),
+          ),
           Container(
-            height: 100,
-            width: 250,
+            height: 170,
+            //width: 400,
+            padding: EdgeInsets.all(19.0),
             child: Column(
               children: [
-                Text('،آواتوپ، اولین وبسایت خبرگزاری صوتی ایران است که سعی دارد با استفاده از هوش مصنوعی، راحتی شما را در شنیدن اخبار ورزشی فراهم نماید',
-                style: TextStyle(fontSize: 11,fontWeight: FontWeight.w600,fontStyle: FontStyle.italic),textAlign: TextAlign.center,),
+                Text('آواتوپ، اولین وبسایت خبرگزاری صوتی ایران است که سعی دارد با استفاده از هوش مصنوعی، راحتی شما را در شنیدن اخبار ورزشی فراهم نماید.',
+                style: TextStyle(fontSize: 19,fontWeight: FontWeight.w600, fontFamily: 'dubai'),textAlign: TextAlign.center,textDirection: TextDirection.rtl),
               ],
             ),
 

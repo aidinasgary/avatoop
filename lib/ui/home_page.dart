@@ -29,24 +29,17 @@ class _HomePageState extends State<HomePage> {
                 children: [
                   const CustomSlider(),
                   // hot news text
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      children: [
-                        Text(
-                          ' ! اخبار داغ ',
-                          style: TextStyle(
-                              fontSize: 30, fontWeight: FontWeight.w500),
-                        ),
-                      ],
+                  Container(
+                    child: const Text("اخبار داغ !",
+                      textDirection: TextDirection.rtl,
+                      style: TextStyle(fontFamily: 'dubai', fontSize: 26),
                     ),
+                    padding: EdgeInsets.only(top: 12, left: 278),
                   ),
-                  //black line
                   Container(
                     color: Colors.black,
-                    width: 350,
-                    height: 1,
+                    padding: EdgeInsets.only(top: 1.8),
+                    margin: EdgeInsets.only(top: 5, right: 20, left: 20),
                   ),
                   //hot news
                   // lorem

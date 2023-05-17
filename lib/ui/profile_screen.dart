@@ -13,8 +13,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.indigo,
-        title: Text('آواتوپ',style: TextStyle(fontWeight: FontWeight.w600,fontSize: 25 ),
+        backgroundColor: Colors.amber,
+        title: Text('آواتوپ',style: TextStyle(fontWeight: FontWeight.w600,fontSize: 25, fontFamily: 'dubai' , color: Colors.black ),
         ),
         centerTitle: true,
       ),
@@ -90,20 +90,68 @@ class _ProfileScreenState extends State<ProfileScreen> {
           Row(
             children: [
               Container(
-                child: ElevatedButton(
+                child: FloatingActionButton.extended(
                   onPressed: (){},
-                  child: const Text('ویرایش مشخصات و تیم')
+                  icon: const Icon(Icons.settings_outlined),
+                  label: Text('ویرایش مشخصات و تیم',
+                    style: TextStyle(fontSize: 18, fontFamily: 'dubai'),
+                  ),
+                  backgroundColor: Colors.blue,
+                  elevation: 0,
                 ),
-                margin: EdgeInsets.only(left: 20),
+                padding: EdgeInsets.only(left: 20, top: 6),
               ),
               Container(
-                child: ElevatedButton(
+                child: FloatingActionButton.extended(
                   onPressed: (){},
-                  child: const Text('خروج')
+                  icon: const Icon(Icons.exit_to_app),
+                  label: Text('خروج',
+                    style: TextStyle(fontSize: 18, fontFamily: 'dubai'),
+                  ),
+                  backgroundColor: Colors.red,
+                  elevation: 0,
                 ),
-                margin: EdgeInsets.only(left: 20),
+                padding: EdgeInsets.only(left: 10, top: 6),
               ),
             ],
+          ),
+          Container(
+            margin: EdgeInsets.only(top: 20, left: 20, right: 20),
+            padding: EdgeInsets.only(top: 10, left: 106, right:20 , bottom: 10),
+            decoration: BoxDecoration(
+              color: Colors.amberAccent,
+              borderRadius: BorderRadius.circular(10)
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.end,
+              children: [
+                Container(
+                  child: Text('تیم های محبوب شما',
+                    textDirection: TextDirection.rtl,
+                    style: TextStyle(fontFamily: 'dubai', fontSize: 23),
+                  ),
+                  padding: EdgeInsets.only(bottom: 8),
+                ),
+                Container(
+                  child: Text('پرسپولیس - رئال مادرید - چلسی',
+                    textDirection: TextDirection.rtl,
+                    style: TextStyle(fontFamily: 'dubai', fontSize: 20),
+                  ),
+                ),
+              ],
+            ),
+          ),
+          Container(
+            child: const Text("اخبار تیم های محبوب شما",
+              textDirection: TextDirection.rtl,
+              style: TextStyle(fontFamily: 'dubai', fontSize: 26),
+            ),
+            padding: EdgeInsets.only(top: 17, left: 115),
+          ),
+          Container(
+            color: Colors.black,
+            padding: EdgeInsets.only(top: 1.8),
+            margin: EdgeInsets.only(top: 5, right: 20, left: 20),
           ),
         ],
       ),
