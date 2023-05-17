@@ -86,8 +86,8 @@ Item copyWith({  String? name,
 /// request : {"method":"GET","header":[{"key":"Accept","value":"application/json","type":"text"}],"url":"127.0.0.1:8000/api/indexadds"}
 /// response : []
 
-class Item {
-  Item({
+class Itemm {
+  Itemm({
       String? name, 
       Request? request, 
       List<dynamic>? response,}){
@@ -96,14 +96,14 @@ class Item {
     _response = response;
 }
 
-  Item.fromJson(dynamic json) {
+  Itemm.fromJson(dynamic json) {
     _name = json['name'];
     _request = json['request'] != null ? Request.fromJson(json['request']) : null;
     if (json['response'] != null) {
       _response = [];
-      json['response'].forEach((v) {
-        _response?.add(Dynamic.fromJson(v));
-      });
+      //json['response'].forEach((v) {
+      //  _response?.add(Dynamic.fromJson(v));
+      //});
     }
   }
   String? _name;
@@ -113,8 +113,8 @@ Item copyWith({  String? name,
   Request? request,
   List<dynamic>? response,
 }) => Item(  name: name ?? _name,
-  request: request ?? _request,
-  response: response ?? _response,
+  //request: request ?? _request,
+  //response: response ?? _response,
 );
   String? get name => _name;
   Request? get request => _request;
