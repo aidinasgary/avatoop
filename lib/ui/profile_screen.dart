@@ -13,8 +13,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("آوا توپ!",
-          textDirection: TextDirection.rtl, style: TextStyle(fontFamily: 'Dubai'),
+        backgroundColor: Colors.indigo,
+        title: Text('آواتوپ',style: TextStyle(fontWeight: FontWeight.w600,fontSize: 25 ),
         ),
         centerTitle: true,
       ),
