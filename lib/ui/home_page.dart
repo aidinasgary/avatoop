@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:untitled16/ui/ertebat_screen.dart';
 import 'package:untitled16/ui/jadval_mosabeghat_screen.dart';
+import 'package:untitled16/ui/login.dart';
 import 'package:untitled16/ui/profile_screen.dart';
 import 'package:untitled16/widgets/custom_slider.dart';
 
@@ -407,7 +408,7 @@ class _HomePageState extends State<HomePage> {
                 ],
               ),
               onTap: () {
-                Navigator.of(context).pushNamed(ProfileScreen.tag);
+                Navigator.of(context).pushNamed(login.tag);
               },
             ),
             ListTile(
