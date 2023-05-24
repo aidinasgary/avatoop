@@ -25,13 +25,24 @@ class _CustomSliderState extends State<CustomSlider> {
                 borderRadius: BorderRadius.circular(12.0),
                 image: DecorationImage(
                   image: (AssetImage(SliderModels.items[index].image)),
-                  fit: BoxFit.cover
+                  fit: BoxFit.fill
                 )
               ),
             );
           },
           options: CarouselOptions(
+            aspectRatio: 16/9,
+            viewportFraction: 0.8,
+            initialPage: 0,
+            enableInfiniteScroll: true,
+            reverse: false,
             autoPlay: true,
+            autoPlayInterval: Duration(seconds: 3),
+            autoPlayAnimationDuration: Duration(milliseconds: 800),
+            autoPlayCurve: Curves.fastOutSlowIn,
+            enlargeCenterPage: true,
+            enlargeFactor: 0.3,
+            scrollDirection: Axis.horizontal,
           )),
     );
   }
