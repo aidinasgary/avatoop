@@ -25,7 +25,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
               textDirection: TextDirection.rtl,
               style: TextStyle(fontFamily: 'dubai', fontSize: 26),
             ),
-            padding: EdgeInsets.only(top: 12, left: 235),
+            padding: EdgeInsets.only(top: 12, left: 220),
           ),
           Container(
             color: Colors.black,
@@ -82,8 +82,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
               ],
             ),
               Container(
-                child: Image.asset('assets/images/profile.png', width: 130),
-                margin: EdgeInsets.only(top: 20, left: 30, bottom: 8),
+                child: Image.asset('assets/images/profile.png', width: 120),
+                margin: EdgeInsets.only(top: 20, left: 20, bottom: 8),
               ),
             ],
           ),
@@ -111,7 +111,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   backgroundColor: Colors.red,
                   elevation: 0,
                 ),
-                padding: EdgeInsets.only(left: 10, top: 6),
+                padding: EdgeInsets.only(left: 17, top: 6),
               ),
             ],
           ),
@@ -135,7 +135,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 Container(
                   child: Text('پرسپولیس - رئال مادرید - چلسی',
                     textDirection: TextDirection.rtl,
-                    style: TextStyle(fontFamily: 'dubai', fontSize: 20),
+                    style: TextStyle(fontFamily: 'dubai', fontSize: 18),
                   ),
                 ),
               ],
@@ -146,7 +146,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
               textDirection: TextDirection.rtl,
               style: TextStyle(fontFamily: 'dubai', fontSize: 26),
             ),
-            padding: EdgeInsets.only(top: 17, left: 115),
+            padding: EdgeInsets.only(top: 17, left: 100),
           ),
           Container(
             color: Colors.black,
