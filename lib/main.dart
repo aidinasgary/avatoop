@@ -22,6 +22,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       home:HomePage(),
       routes:{
+
         JadvalMosabeghat.tag : (context)=>JadvalMosabeghat(),
         ErtebatScreen.tag : (context)=>ErtebatScreen(),
         ProfileScreen.tag : (context)=>ProfileScreen(),

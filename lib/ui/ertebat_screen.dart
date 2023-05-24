@@ -18,7 +18,7 @@ class _ErtebatScreenState extends State<ErtebatScreen> {
           style: TextStyle(fontSize: 24, fontWeight: FontWeight.w600, fontFamily: 'dubai'),
         ),
         centerTitle: true,
-        backgroundColor: Colors.blue,
+        backgroundColor: Colors.indigo,
       ),
       body: Column(
         children: [
@@ -45,7 +45,7 @@ class _ErtebatScreenState extends State<ErtebatScreen> {
             child: Column(
               children: [
                 Text('آواتوپ، اولین وبسایت خبرگزاری صوتی ایران است که سعی دارد با استفاده از هوش مصنوعی، راحتی شما را در شنیدن اخبار ورزشی فراهم نماید.',
-                style: TextStyle(fontSize: 19,fontWeight: FontWeight.w600, fontFamily: 'dubai'),textAlign: TextAlign.center,textDirection: TextDirection.rtl),
+                style: TextStyle(fontSize: 17,fontWeight: FontWeight.w600, fontFamily: 'dubai'),textAlign: TextAlign.center,textDirection: TextDirection.rtl),
               ],
             ),
 

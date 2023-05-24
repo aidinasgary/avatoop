@@ -306,7 +306,9 @@ class _JadvalMosabeghatState extends State<JadvalMosabeghat> {
                     width: 350,
                     height: 2,
                   ),
-                 ElevatedButton(onPressed: (){}, child: Text('سایر تیم ها'))
+                 ElevatedButton(onPressed: (){
+                   Navigator.of(context).popAndPushNamed('http://avatoop.com/iranleaguecard');
+                 }, child: Text('سایر تیم ها'))
                 ],
               ),
             ),
