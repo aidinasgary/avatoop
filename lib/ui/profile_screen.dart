@@ -13,8 +13,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.amber,
-        title: Text('آواتوپ',style: TextStyle(fontWeight: FontWeight.w600,fontSize: 25, fontFamily: 'dubai' , color: Colors.black ),
+        backgroundColor: Colors.indigo,
+        title: Text('آواتوپ',style: TextStyle(fontWeight: FontWeight.w600,fontSize: 25, fontFamily: 'dubai' ),
         ),
         centerTitle: true,
       ),
@@ -94,7 +94,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   onPressed: (){},
                   icon: const Icon(Icons.settings_outlined),
                   label: Text('ویرایش مشخصات و تیم',
-                    style: TextStyle(fontSize: 18, fontFamily: 'dubai'),
+                    style: TextStyle(fontSize: 15, fontFamily: 'dubai'),
                   ),
                   backgroundColor: Colors.blue,
                   elevation: 0,
@@ -106,7 +106,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   onPressed: (){},
                   icon: const Icon(Icons.exit_to_app),
                   label: Text('خروج',
-                    style: TextStyle(fontSize: 18, fontFamily: 'dubai'),
+                    style: TextStyle(fontSize: 16, fontFamily: 'dubai'),
                   ),
                   backgroundColor: Colors.red,
                   elevation: 0,
