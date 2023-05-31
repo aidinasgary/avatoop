@@ -1,9 +1,7 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:untitled16/ui/ertebat_screen.dart';
 import 'package:untitled16/ui/jadval_mosabeghat_screen.dart';
 import 'package:untitled16/ui/login.dart';
-import 'package:untitled16/ui/profile_screen.dart';
 import 'package:untitled16/widgets/custom_slider.dart';
 
 class HomePage extends StatefulWidget {
@@ -18,12 +16,15 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('آواتوپ',style: TextStyle(fontWeight: FontWeight.w600,fontSize: 25 ),),
+        title: Text(
+          'آواتوپ',
+          style: TextStyle(fontWeight: FontWeight.w600, fontSize: 25),
+        ),
         centerTitle: true,
         backgroundColor: Colors.indigo,
       ),
       body: SingleChildScrollView(
-        child: Column(children:[
+        child: Column(children: [
           Column(
             children: [
               Column(
@@ -31,7 +32,8 @@ class _HomePageState extends State<HomePage> {
                   const CustomSlider(),
                   // hot news text
                   Container(
-                    child: const Text("اخبار داغ !",
+                    child: const Text(
+                      "اخبار داغ !",
                       textDirection: TextDirection.rtl,
                       style: TextStyle(fontFamily: 'dubai', fontSize: 26),
                     ),
@@ -55,7 +57,7 @@ class _HomePageState extends State<HomePage> {
                             height: 190,
                             decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(21),
-                                image: DecorationImage(
+                                image: const DecorationImage(
                                     image: (AssetImage(
                                         'assets/1672129479_esteghlal.jpg')),
                                     fit: BoxFit.cover)),
@@ -69,7 +71,7 @@ class _HomePageState extends State<HomePage> {
                               decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(100),
                                   color: Colors.lightBlueAccent),
-                              child: Icon(Icons.navigate_before),
+                              child: const Icon(Icons.navigate_before),
                             )),
                         Positioned(
                             top: 90,
@@ -117,15 +119,16 @@ class _HomePageState extends State<HomePage> {
                             children: [
                               Row(
                                 mainAxisAlignment:
-                                MainAxisAlignment.spaceBetween,
+                                    MainAxisAlignment.spaceBetween,
                                 children: [
                                   IconButton(
                                       onPressed: () {
                                         Voice_Play();
                                       },
-                                      icon: Icon(  Icons.perm_camera_mic_rounded,
-                                        color: Colors.green,)
-                                  ),
+                                      icon: Icon(
+                                        Icons.perm_camera_mic_rounded,
+                                        color: Colors.green,
+                                      )),
                                   Text('بخشی از متن خبر یا عنوان آن')
                                 ],
                               ),
@@ -144,15 +147,16 @@ class _HomePageState extends State<HomePage> {
                             children: [
                               Row(
                                 mainAxisAlignment:
-                                MainAxisAlignment.spaceBetween,
+                                    MainAxisAlignment.spaceBetween,
                                 children: [
                                   IconButton(
                                       onPressed: () {
                                         Voice_Play();
                                       },
-                                      icon: Icon(  Icons.perm_camera_mic_rounded,
-                                        color: Colors.green,)
-                                  ),
+                                      icon: Icon(
+                                        Icons.perm_camera_mic_rounded,
+                                        color: Colors.green,
+                                      )),
                                   Text('بخشی از متن خبر یا عنوان آن')
                                 ],
                               ),
@@ -171,15 +175,16 @@ class _HomePageState extends State<HomePage> {
                             children: [
                               Row(
                                 mainAxisAlignment:
-                                MainAxisAlignment.spaceBetween,
+                                    MainAxisAlignment.spaceBetween,
                                 children: [
                                   IconButton(
                                       onPressed: () {
                                         Voice_Play();
                                       },
-                                      icon: Icon(  Icons.perm_camera_mic_rounded,
-                                        color: Colors.green,)
-                                  ),
+                                      icon: Icon(
+                                        Icons.perm_camera_mic_rounded,
+                                        color: Colors.green,
+                                      )),
                                   Text('بخشی از متن خبر یا عنوان آن')
                                 ],
                               ),
@@ -198,15 +203,16 @@ class _HomePageState extends State<HomePage> {
                             children: [
                               Row(
                                 mainAxisAlignment:
-                                MainAxisAlignment.spaceBetween,
+                                    MainAxisAlignment.spaceBetween,
                                 children: [
                                   IconButton(
                                       onPressed: () {
                                         Voice_Play();
                                       },
-                                      icon: Icon(  Icons.perm_camera_mic_rounded,
-                                        color: Colors.green,)
-                                  ),
+                                      icon: Icon(
+                                        Icons.perm_camera_mic_rounded,
+                                        color: Colors.green,
+                                      )),
                                   Text('بخشی از متن خبر یا عنوان آن')
                                 ],
                               ),
@@ -217,8 +223,7 @@ class _HomePageState extends State<HomePage> {
                                 height: 2,
                               ),
                               ElevatedButton(
-                                  onPressed: () {},
-                                  child: Text('سایر خبر ها'))
+                                  onPressed: () {}, child: Text('سایر خبر ها'))
                             ],
                           ),
                         ),
@@ -263,15 +268,16 @@ class _HomePageState extends State<HomePage> {
                             children: [
                               Row(
                                 mainAxisAlignment:
-                                MainAxisAlignment.spaceBetween,
+                                    MainAxisAlignment.spaceBetween,
                                 children: [
                                   IconButton(
                                       onPressed: () {
                                         Voice_Play();
                                       },
-                                      icon: Icon(  Icons.perm_camera_mic_rounded,
-                                        color: Colors.green,)
-                                  ),
+                                      icon: Icon(
+                                        Icons.perm_camera_mic_rounded,
+                                        color: Colors.green,
+                                      )),
                                   Text('بخشی از متن خبر یا عنوان آن')
                                 ],
                               ),
@@ -290,15 +296,16 @@ class _HomePageState extends State<HomePage> {
                             children: [
                               Row(
                                 mainAxisAlignment:
-                                MainAxisAlignment.spaceBetween,
+                                    MainAxisAlignment.spaceBetween,
                                 children: [
                                   IconButton(
                                       onPressed: () {
                                         Voice_Play();
                                       },
-                                      icon: Icon(  Icons.perm_camera_mic_rounded,
-                                        color: Colors.green,)
-                                  ),
+                                      icon: Icon(
+                                        Icons.perm_camera_mic_rounded,
+                                        color: Colors.green,
+                                      )),
                                   Text('بخشی از متن خبر یا عنوان آن')
                                 ],
                               ),
@@ -317,15 +324,16 @@ class _HomePageState extends State<HomePage> {
                             children: [
                               Row(
                                 mainAxisAlignment:
-                                MainAxisAlignment.spaceBetween,
+                                    MainAxisAlignment.spaceBetween,
                                 children: [
                                   IconButton(
                                       onPressed: () {
                                         Voice_Play();
                                       },
-                                      icon: Icon(  Icons.perm_camera_mic_rounded,
-                                        color: Colors.green,)
-                                  ),
+                                      icon: Icon(
+                                        Icons.perm_camera_mic_rounded,
+                                        color: Colors.green,
+                                      )),
                                   Text('بخشی از متن خبر یا عنوان آن')
                                 ],
                               ),
@@ -344,15 +352,16 @@ class _HomePageState extends State<HomePage> {
                             children: [
                               Row(
                                 mainAxisAlignment:
-                                MainAxisAlignment.spaceBetween,
+                                    MainAxisAlignment.spaceBetween,
                                 children: [
                                   IconButton(
                                       onPressed: () {
                                         Voice_Play();
                                       },
-                                      icon: Icon(  Icons.perm_camera_mic_rounded,
-                                        color: Colors.green,)
-                                  ),
+                                      icon: Icon(
+                                        Icons.perm_camera_mic_rounded,
+                                        color: Colors.green,
+                                      )),
                                   Text('بخشی از متن خبر یا عنوان آن')
                                 ],
                               ),
@@ -432,7 +441,8 @@ class _HomePageState extends State<HomePage> {
     showModalBottomSheet(
       context: context,
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.only(topLeft: Radius.circular(30),topRight: Radius.circular(30)),
+        borderRadius: BorderRadius.only(
+            topLeft: Radius.circular(30), topRight: Radius.circular(30)),
       ),
       builder: (context) {
         return Container(

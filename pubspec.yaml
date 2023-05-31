@@ -37,6 +37,8 @@ dependencies:
   carousel_slider: ^4.2.1
   dio: ^5.1.2
   url_launcher: ^6.1.11
+  percent_indicator: ^4.2.3
+  get: ^4.6.5
 
 dev_dependencies:
   flutter_test:
