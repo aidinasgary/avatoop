@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:untitled16/ui/ertebat_screen.dart';
-import 'package:untitled16/ui/jadval_mosabeghat_screen.dart';
-import 'package:untitled16/ui/login.dart';
-import 'package:untitled16/ui/profile_screen.dart';
-import 'package:untitled16/ui/sound_player.dart';
+import 'package:untitled16/view/Other/ertebat_screen.dart';
+import 'package:untitled16/view/home_page.dart';
+import 'package:untitled16/view/Other/jadval_mosabeghat_screen.dart';
+import 'package:untitled16/view/Other/login.dart';
+import 'package:untitled16/view/Other/profile_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
           primarySwatch: Colors.blue,
         ),
         debugShowCheckedModeBanner: false,
-        home: SoundPlayer(),
+        home: HomePage(),
         routes: {
           JadvalMosabeghat.tag: (context) => JadvalMosabeghat(),
           ErtebatScreen.tag: (context) => ErtebatScreen(),
