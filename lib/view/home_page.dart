@@ -14,9 +14,11 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
+    var size = MediaQuery.of(context).size;
     List pages = ["News", "Audio", "Match", "Leauge"];
 
     return Scaffold(
+      backgroundColor: Colors.grey[200],
       appBar: AppBar(
         title: const Text(
           'آواتوپ',
@@ -36,7 +38,7 @@ class _HomePageState extends State<HomePage> {
                   //ListView---------------------------
 
                   SizedBox(
-                    height: 60,
+                    height: 55,
                     width: double.infinity,
                     child: ListView.builder(
                       scrollDirection: Axis.horizontal,
@@ -44,22 +46,13 @@ class _HomePageState extends State<HomePage> {
                       itemBuilder: (context, index) => Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: Container(
-                          width: 90,
+                          width: 100,
                           decoration: BoxDecoration(
-                              color: Colors.white,
-                              borderRadius: BorderRadius.circular(15),
-                              border:
-                                  Border.all(color: Colors.black12, width: 1),
-                              boxShadow: const [
-                                BoxShadow(
-                                    color: Colors.black38,
-                                    blurRadius: 1.0,
-                                    offset: Offset(2, 2)),
-                                BoxShadow(
-                                    color: Colors.black38,
-                                    blurRadius: 1.0,
-                                    offset: Offset(-2, -2))
-                              ]),
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(12),
+                            //  border:
+                            // Border.all(color: Colors.black12, width: 1),
+                          ),
                           child: Center(child: Text(pages[index])),
                         ),
                       ),
@@ -81,20 +74,34 @@ class _HomePageState extends State<HomePage> {
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
                       Container(
-                        height: 300,
+                        height: 350,
                         width: 220,
                         decoration: BoxDecoration(
-                          color: Colors.amber,
+                          color: Colors.red,
                           borderRadius: BorderRadius.circular(15),
                         ),
+                        child: Column(children: [
+                          SizedBox(
+                            height: 350,
+                            width: double.infinity,
+                            child: HotNewsListView(size: size),
+                          )
+                        ]),
                       ),
                       Container(
-                        height: 300,
+                        height: 350,
                         width: 220,
                         decoration: BoxDecoration(
-                          color: Colors.amber,
+                          color: Colors.red,
                           borderRadius: BorderRadius.circular(15),
                         ),
+                        child: Column(children: [
+                          SizedBox(
+                            height: 350,
+                            width: double.infinity,
+                            child: HotNewsListView(size: size),
+                          )
+                        ]),
                       ),
                     ],
                   ),
@@ -230,5 +237,41 @@ class _HomePageState extends State<HomePage> {
         );
       },
     );
+  }
+}
+
+class HotNewsListView extends StatelessWidget {
+  const HotNewsListView({
+    super.key,
+    required this.size,
+  });
+
+  final Size size;
+
+  @override
+  Widget build(BuildContext context) {
+    return ListView.builder(
+        scrollDirection: Axis.vertical,
+        itemCount: 4,
+        itemBuilder: (context, index) => Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  SizedBox(
+                    height: size.height / 9,
+                    width: size.width / 4,
+                    child: Text(
+                        "برنامه بازی‌های لیگ قهرمانان اروپا به همراه جدول بازی‌های لیگ قهرمانان اروپا و نتایج زنده بازی‌های آن و بازی‌های باقیمانده لیگ ..."),
+                  ),
+                  Spacer(),
+                  Container(
+                    height: 50,
+                    width: 70,
+                    color: Colors.white,
+                  ),
+                ],
+              ),
+            ));
   }
 }
