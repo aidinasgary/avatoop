@@ -1,11 +1,20 @@
-import 'package:flutter/material.dart';
+/*import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:percent_indicator/percent_indicator.dart';
-
+import 'package:untitled16/models/audio_player_api.dart';*/
+/*
 class SoundPlayer extends StatelessWidget {
-  const SoundPlayer({super.key});
+  late SingleAudioControllr singleAudioControllr;
+  late AudioPlayerModel audioPlayerModel;
 
+  SoundPlayer() {
+    // audioPlayerModel = Get,argument
+    singleAudioControllr =
+        Get.put(SingleAudioControllr(id: audioPlayerModel.id));
+  }
   @override
   Widget build(BuildContext context) {
+    print(audioPlayerModel);
     return Scaffold(
         body: Center(
       child: ElevatedButton(
@@ -69,3 +78,4 @@ class SoundPlayer extends StatelessWidget {
     ));
   }
 }
+*/

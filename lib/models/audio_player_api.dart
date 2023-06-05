@@ -25,8 +25,14 @@ class SingleAudioControllr extends GetxController {
   SingleAudioControllr({this.id});
 
   RxBool loading = false.obs;
-  Rx<AudioPlayerModel> audioPlayerModel = AudioPlayerModel().obs;
+  // Rx<AudioPlayerModel> audioPlayerModel = AudioPlayerModel().obs;
   RxList<AudioPlayerModel> audioPlayerList = RxList();
+
+  @override
+  onInit() {
+    super.onInit();
+    getAudioFile();
+  }
 
   getAudioFile() async {
     loading.value = true;
