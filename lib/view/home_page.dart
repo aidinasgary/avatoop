@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:untitled16/view/Other/ertebat_screen.dart';
 import 'package:untitled16/view/Other/jadval_mosabeghat_screen.dart';
 import 'package:untitled16/view/Other/login.dart';
+import 'package:untitled16/widgets/play_button.dart';
 import 'package:untitled16/widgets/custom_slider.dart';
 
 class HomePage extends StatefulWidget {
@@ -132,9 +133,36 @@ class _HomePageState extends State<HomePage> {
                     ),
                   ),
                   //news text
-                  Text(
-                    'اخبار  ',
-                    style: TextStyle(fontSize: 30, fontWeight: FontWeight.w500),
+                  Padding(
+                    padding: EdgeInsets.all(8.0),
+                    child: Row(
+                      children: [
+                        GestureDetector(
+                          onTap: () {},
+                          child: const Row(
+                            children: [
+                              Icon(
+                                Icons.keyboard_double_arrow_left_rounded,
+                                color: Colors.blue,
+                              ),
+                              Text(
+                                'بیشتر',
+                                style: TextStyle(
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.w500,
+                                    color: Colors.blue),
+                              ),
+                            ],
+                          ),
+                        ),
+                        const Spacer(),
+                        const Text(
+                          'اخبار صوتی',
+                          style: TextStyle(
+                              fontSize: 20, fontWeight: FontWeight.w500),
+                        ),
+                      ],
+                    ),
                   ),
 
                   SizedBox(
@@ -146,13 +174,28 @@ class _HomePageState extends State<HomePage> {
                       itemBuilder: (context, index) => Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: Container(
-                          height: 50,
-                          width: double.infinity,
-                          decoration: BoxDecoration(
-                            color: Colors.blue,
-                            borderRadius: BorderRadius.circular(15),
-                          ),
-                        ),
+                            margin: const EdgeInsets.symmetric(horizontal: 10),
+                            height: 50,
+                            width: double.infinity,
+                            decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(15),
+                            ),
+                            child: const Row(
+                              mainAxisAlignment: MainAxisAlignment.end,
+                              children: [
+                                Padding(
+                                  padding: EdgeInsets.all(8.0),
+                                  child: Widget001(),
+                                ),
+                                Spacer(),
+                                Text("How is thbest in Eourp"),
+                                Icon(
+                                  Icons.mic,
+                                  color: Colors.blue,
+                                ),
+                              ],
+                            )),
                       ),
                     ),
                   ),
