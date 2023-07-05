@@ -37,8 +37,10 @@ class _Widget001State extends State<Widget001> with TickerProviderStateMixin {
           _isPlay == false;
         }
       },
-      child:
-          AnimatedIcon(icon: AnimatedIcons.play_pause, progress: _controller),
+      child: AnimatedIcon(
+        icon: AnimatedIcons.play_pause,
+        progress: _controller,
+      ),
     ));
   }
 }

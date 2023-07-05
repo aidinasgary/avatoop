@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
-import 'package:untitled16/models/dioservice.dart';
-import 'package:untitled16/models/url.dart';
+import 'package:untitled16/constant/api_const.dart';
+import 'package:untitled16/controller/dioservice.dart';
 
 class AudioPlayerModel {
   String? id;
@@ -25,7 +25,7 @@ class SingleAudioControllr extends GetxController {
   SingleAudioControllr({this.id});
 
   RxBool loading = false.obs;
-  // Rx<AudioPlayerModel> audioPlayerModel = AudioPlayerModel().obs;
+  Rx<AudioPlayerModel> audioPlayerModel = AudioPlayerModel().obs;
   RxList<AudioPlayerModel> audioPlayerList = RxList();
 
   @override
@@ -37,7 +37,8 @@ class SingleAudioControllr extends GetxController {
   getAudioFile() async {
     loading.value = true;
 
-    var response = await DioService().getMethod(myString.baseUtl);
+    var response =
+        await DioService().getMethod(ApiUrlConstant.podcastFiles + id);
     if (response.stateCode == 200) {
       for (var element in response.data['files']) {
         audioPlayerList.add(AudioPlayerModel.fromJson(element));
