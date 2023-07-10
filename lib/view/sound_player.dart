@@ -1,24 +1,29 @@
-/*mport 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:percent_indicator/percent_indicator.dart';
-
-import '../controller/audio_player_api.dart';
+import 'package:flutter/material.dart';
 
 class SoundPlayer extends StatelessWidget {
-  late SingleAudioControllr singleAudioControllr;
-  late AudioPlayerModel audioPlayerModel;
-/*
-  SoundPlayer() {
-    //Get.argument =
-    singleAudioControllr =
-        Get.put(SingleAudioControllr(id: audioPlayerModel.id));
-  }*/
+  const SoundPlayer({super.key});
+  static const String tag = '/SoundPlayerRoute';
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: Center(
-      child: 
-    ));
+      body: ListView.builder(
+          scrollDirection: Axis.vertical,
+          itemCount: 10,
+          itemBuilder: (context, index) {
+            return Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Container(
+                decoration: BoxDecoration(
+                    color: Colors.indigo,
+                    borderRadius: BorderRadius.circular(15)),
+                child: const ListTile(
+                  leading: Icon(Icons.abc),
+                  title: Text("data"),
+                  trailing: Icon(Icons.play_arrow_rounded),
+                ),
+              ),
+            );
+          }),
+    );
   }
 }
-*/
