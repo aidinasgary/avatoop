@@ -11,6 +11,7 @@ mylauncherUrl(String url) async {
   }
 }
 
+// ignore: camel_case_types
 class myString {
   static const baseUtl = "https://www.youtube.com/";
   static const String siteUrl = "https://www.youtube.com/watch?v=se8CeCppb84";
