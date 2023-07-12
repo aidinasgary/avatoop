@@ -1,9 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:percent_indicator/linear_percent_indicator.dart';
+import 'package:untitled16/view/League_page.dart';
 import 'package:untitled16/view/Other/ertebat_screen.dart';
 import 'package:untitled16/view/Other/jadval_mosabeghat_screen.dart';
 import 'package:untitled16/view/Other/login.dart';
-import 'package:untitled16/widgets/play_button.dart';
+import 'package:untitled16/view/hot_news_page.dart';
+import 'package:untitled16/view/news_pages.dart';
 import 'package:untitled16/widgets/custom_slider.dart';
+
+import 'Other/stable_classes.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -38,36 +44,69 @@ class _HomePageState extends State<HomePage> {
                   // amiri make changes here
                   //ListView---------------------------
 
-                  SizedBox(
-                    height: 55,
-                    width: double.infinity,
-                    child: ListView.builder(
-                      scrollDirection: Axis.horizontal,
-                      itemCount: pages.length,
-                      itemBuilder: (context, index) => Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Container(
-                          width: 100,
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(12),
-                            //  border:
-                            // Border.all(color: Colors.black12, width: 1),
+                  //----------------------------------------------
+                  GestureDetector(
+                    onTap: (){
+                      Navigator.of(context).pushNamed(news_pages.tag);
+                    },
+                    child:                  SizedBox(
+                      height: 55,
+                      width: double.infinity,
+                      child: ListView.builder(
+                        scrollDirection: Axis.horizontal,
+                        itemCount: pages.length,
+                        itemBuilder: (context, index) => Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Container(
+                            width: 100,
+                            decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(12),
+                              //  border:
+                              // Border.all(color: Colors.black12, width: 1),
+                            ),
+                            child: Center(child: Text(pages[index])),
                           ),
-                          child: Center(child: Text(pages[index])),
+
+
                         ),
                       ),
                     ),
-                  ),
-                  //----------------------------------------------
 
+                  ),
                   // hot news text
-                  Container(
-                    padding: const EdgeInsets.only(top: 12, left: 278),
-                    child: const Text(
-                      "اخبار داغ !",
-                      textDirection: TextDirection.rtl,
-                      style: TextStyle(fontFamily: 'dubai', fontSize: 26),
+                  Padding(
+                    padding: EdgeInsets.all(8.0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Icon(
+                          Icons.keyboard_double_arrow_left_rounded,
+                          color: Colors.blue,
+                        ),
+                        GestureDetector(
+                          onTap: () {
+                            // Get.toNamed( HotNewsPage());
+                          },
+                          child: const Text(
+                            'بیشتر',
+                            style: TextStyle(
+                                fontSize: 20,
+                                fontWeight: FontWeight.w500,
+                                color: Colors.blue),
+                          ),
+                        ),
+                        const Spacer(),
+                        const Text(
+                          "اخبار داغ !",
+                          textDirection: TextDirection.rtl,
+                          style: TextStyle(
+                            // fontFamily: 'dubai',
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ],
                     ),
                   ),
                   // hot news text
@@ -78,7 +117,7 @@ class _HomePageState extends State<HomePage> {
                         height: 350,
                         width: 220,
                         decoration: BoxDecoration(
-                          color: Colors.red,
+                          color: Colors.white,
                           borderRadius: BorderRadius.circular(15),
                         ),
                         child: Column(children: [
@@ -93,7 +132,7 @@ class _HomePageState extends State<HomePage> {
                         height: 350,
                         width: 220,
                         decoration: BoxDecoration(
-                          color: Colors.red,
+                          color: Colors.white,
                           borderRadius: BorderRadius.circular(15),
                         ),
                         child: Column(children: [
@@ -106,35 +145,15 @@ class _HomePageState extends State<HomePage> {
                       ),
                     ],
                   ),
-                  SizedBox(height: 20),
+                  const SizedBox(height: 20),
                   // Premier League standings
                   // ‌جدول رده بندی
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 20),
-                    child: Container(
-                      height: 400,
-                      width: double.infinity,
-                      decoration: BoxDecoration(
-                        color: Colors.amber,
-                        borderRadius: BorderRadius.circular(15),
-                      ),
-                    ),
-                  ),
-                  SizedBox(height: 20),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 20),
-                    child: Container(
-                      height: 400,
-                      width: double.infinity,
-                      decoration: BoxDecoration(
-                        color: Colors.blue,
-                        borderRadius: BorderRadius.circular(15),
-                      ),
-                    ),
-                  ),
+                  NewWidget(size: size),
+                  const SizedBox(height: 20),
+                  NewWidget(size: size),
                   //news text
                   Padding(
-                    padding: EdgeInsets.all(8.0),
+                    padding: const EdgeInsets.all(8.0),
                     child: Row(
                       children: [
                         GestureDetector(
@@ -181,14 +200,97 @@ class _HomePageState extends State<HomePage> {
                               color: Colors.white,
                               borderRadius: BorderRadius.circular(15),
                             ),
-                            child: const Row(
+                            child: Row(
                               mainAxisAlignment: MainAxisAlignment.end,
                               children: [
                                 Padding(
-                                  padding: EdgeInsets.all(8.0),
-                                  child: Widget001(),
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: ElevatedButton(
+                                      onPressed: () {
+                                        showModalBottomSheet(
+                                            context: context,
+                                            builder: (context) {
+                                              return SizedBox(
+                                                height: 400,
+                                                child: Column(
+                                                  children: [
+                                                    Padding(
+                                                      padding:
+                                                          const EdgeInsets.all(
+                                                              8.0),
+                                                      child: Container(
+                                                        height: 100,
+                                                        width: double.infinity,
+                                                        decoration: BoxDecoration(
+                                                            color:
+                                                                Colors.purple,
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        12)),
+                                                        child: Column(
+                                                          mainAxisAlignment:
+                                                              MainAxisAlignment
+                                                                  .spaceAround,
+                                                          children: [
+                                                            LinearPercentIndicator(
+                                                              percent: 1.0,
+                                                              backgroundColor:
+                                                                  Colors.teal,
+                                                              progressColor:
+                                                                  Colors.amber,
+                                                            ),
+                                                            const Row(
+                                                              mainAxisAlignment:
+                                                                  MainAxisAlignment
+                                                                      .spaceAround,
+                                                              children: [
+                                                                Icon(
+                                                                    Icons
+                                                                        .skip_previous_rounded,
+                                                                    color: Colors
+                                                                        .white),
+                                                                Icon(
+                                                                  Icons
+                                                                      .play_circle_fill_rounded,
+                                                                  color: Colors
+                                                                      .white,
+                                                                  size: 40,
+                                                                ),
+                                                                Icon(
+                                                                    Icons
+                                                                        .skip_next_rounded,
+                                                                    color: Colors
+                                                                        .white),
+                                                                SizedBox(),
+                                                                Icon(
+                                                                    Icons
+                                                                        .loop_rounded,
+                                                                    color: Colors
+                                                                        .white),
+                                                              ],
+                                                            ),
+                                                          ],
+                                                        ),
+                                                      ),
+                                                    ),
+                                                    ElevatedButton(
+                                                        onPressed: () {
+                                                          Navigator.pop(
+                                                              context);
+                                                        },
+                                                        child: const Text(
+                                                            'Cluse')),
+                                                  ],
+                                                ),
+                                              );
+                                            });
+                                      },
+                                      child:
+                                          const Icon(Icons.play_arrow_rounded)),
+                                  // Widget001(),
                                 ),
-                                Spacer(),
+                                const Spacer(),
                                 Text("How is thbest in Eourp"),
                                 Icon(
                                   Icons.mic,
@@ -208,7 +310,7 @@ class _HomePageState extends State<HomePage> {
       drawer: Drawer(
         child: ListView(
           children: [
-            DrawerHeader(
+            const DrawerHeader(
                 decoration: BoxDecoration(color: Colors.indigo),
                 child: UserAccountsDrawerHeader(
                   accountName: Text('aidn asgary'),
@@ -228,7 +330,7 @@ class _HomePageState extends State<HomePage> {
                 ],
               ),
               onTap: () {
-                Navigator.of(context).pushNamed(JadvalMosabeghat.tag);
+                Navigator.of(context).pushNamed(LeaguePage.tag);
               },
             ),
             ListTile(
@@ -258,33 +360,10 @@ class _HomePageState extends State<HomePage> {
       ),
     );
   }
-
-  void Voice_Play() {
-    showModalBottomSheet(
-      context: context,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.only(
-            topLeft: Radius.circular(30), topRight: Radius.circular(30)),
-      ),
-      builder: (context) {
-        return Container(
-          height: 150,
-          padding: EdgeInsets.symmetric(horizontal: 16, vertical: 20),
-          alignment: Alignment.center,
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              ElevatedButton(onPressed: () {}, child: Icon(Icons.play_arrow))
-            ],
-          ),
-        );
-      },
-    );
-  }
 }
 
-class HotNewsListView extends StatelessWidget {
-  const HotNewsListView({
+class NewWidget extends StatelessWidget {
+  const NewWidget({
     super.key,
     required this.size,
   });
@@ -293,28 +372,110 @@ class HotNewsListView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
-        scrollDirection: Axis.vertical,
-        itemCount: 4,
-        itemBuilder: (context, index) => Padding(
-              padding: const EdgeInsets.all(8.0),
+    return StableContainer(
+      Width: double.infinity,
+      Height: size.width / 1.1,
+      child: Column(
+        children: [
+          Container(
+            height: 70,
+            width: double.infinity,
+            decoration: const BoxDecoration(
+                color: Colors.indigo,
+                borderRadius: BorderRadius.only(
+                    topRight: Radius.circular(12),
+                    topLeft: Radius.circular(12))),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                const Text('جدول رده بندی لیگ برتر خلیج فارس'),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: SizedBox(
+                    height: 30,
+                    width: size.width / 6,
+                    child: Image.asset(
+                      'assets/images/dow.png',
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+          Container(
+              decoration: const BoxDecoration(
+                  color: Colors.white,
+                  border: Border.symmetric(
+                      horizontal: BorderSide(
+                    width: 1,
+                    color: Colors.green,
+                  ))),
               child: Row(
-                mainAxisAlignment: MainAxisAlignment.end,
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  SizedBox(
-                    height: size.height / 9,
-                    width: size.width / 4,
-                    child: Text(
-                        "برنامه بازی‌های لیگ قهرمانان اروپا به همراه جدول بازی‌های لیگ قهرمانان اروپا و نتایج زنده بازی‌های آن و بازی‌های باقیمانده لیگ ..."),
-                  ),
-                  Spacer(),
+                  Text("GD"),
+                  Text("D"),
+                  Text("L"),
+                  Text("W"),
+                  Text("MP"),
+                  SizedBox(width: size.width / 2.5),
+                  Text("باشگاه"),
+                ],
+              )),
+          SizedBox(
+            height: size.width / 1.6,
+            width: double.infinity,
+            child: ListView.builder(
+              scrollDirection: Axis.vertical,
+              itemCount: 6,
+              itemBuilder: (context, index) => Column(
+                children: [
                   Container(
-                    height: 50,
-                    width: 70,
-                    color: Colors.white,
-                  ),
+                      height: size.width / 10,
+                      decoration: const BoxDecoration(
+                          color: Colors.white,
+                          border: Border.symmetric(
+                              horizontal: BorderSide(
+                            width: 1,
+                            color: Colors.green,
+                          ))),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          Text("No."),
+                          Text("No."),
+                          Text("No."),
+                          Text("No."),
+                          SizedBox(width: size.width / 3),
+                          Icon(Icons.hot_tub),
+                          Text("No."),
+                        ],
+                      )),
                 ],
               ),
-            ));
+            ),
+          ),
+          Container(
+              decoration: const BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.only(
+                    bottomLeft: Radius.circular(12),
+                    bottomRight: Radius.circular(12)),
+              ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  Text("No."),
+                  Text("No."),
+                  Text("No."),
+                  Text("No."),
+                  SizedBox(width: size.width / 3),
+                  Icon(Icons.hot_tub),
+                  Text("No."),
+                ],
+              )),
+        ],
+      ),
+    );
   }
 }
