@@ -8,7 +8,7 @@ class SoundPlayer extends StatelessWidget {
     return Scaffold(
       body: ListView.builder(
           scrollDirection: Axis.vertical,
-          itemCount: 10,
+          itemCount: 20,
           itemBuilder: (context, index) {
             return Padding(
               padding: const EdgeInsets.all(8.0),
