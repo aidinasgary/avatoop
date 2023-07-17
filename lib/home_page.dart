@@ -152,9 +152,9 @@ class _HomePageState extends State<HomePage> {
                   const SizedBox(height: 20),
                   LeaugeScores(size: size),
                   //news text
-                  const MoreTitle(
-                    write: Text("اخبار صوتی"),
-                  ),
+                  //  const MoreTitle(
+                  //    write: Text("اخبار صوتی"),
+                  //   ),
 
                   SizedBox(
                     width: double.infinity,
