@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:untitled16/view/League_page.dart';
 import 'package:untitled16/view/Other/ertebat_screen.dart';
 import 'package:untitled16/view/Other/login.dart';
 import 'package:untitled16/view/Other/profile_screen.dart';
@@ -31,6 +32,7 @@ class MyApp extends StatelessWidget {
           ProfileScreen.tag: (context) => const ProfileScreen(),
           login.tag: (context) => const login(),
           SoundPlayer.tag: (context) => const SoundPlayer(),
+          LeaguePage.tag: (context) => LeaguePage()
         });
   }
 }

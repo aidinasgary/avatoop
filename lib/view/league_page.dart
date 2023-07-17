@@ -3,7 +3,7 @@ import 'package:untitled16/view/TableScreen.dart';
 import 'package:untitled16/widgets/LeagueContainer.dart';
 
 class LeaguePage extends StatefulWidget {
-  static const String tag = '/LeaguePageRoute';
+  static const String tag = 'LeaguePageRoute/';
   @override
   _LeaguePageState createState() => _LeaguePageState();
 }

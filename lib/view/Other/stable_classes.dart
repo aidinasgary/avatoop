@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:untitled16/model/data/avatoop_fack_data.dart';
 
+import '../League_page.dart';
 import 'ertebat_screen.dart';
 
 // Container with Padding
@@ -224,7 +225,9 @@ class DrawerBoke extends StatelessWidget {
                 Text('  جدول مسابقات'),
               ],
             ),
-            onTap: () {},
+            onTap: () {
+              Navigator.of(context).pushNamed(LeaguePage.tag);
+            },
           ),
           ListTile(
             title: const Row(
