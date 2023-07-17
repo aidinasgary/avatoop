@@ -7,17 +7,18 @@ import 'package:http/http.dart' as http;
 class TableScreen extends StatefulWidget {
   final String code;
 
-  const TableScreen({Key key, this.code}) : super(key: key);
+  const TableScreen({required Key key, required this.code}) : super(key: key);
   @override
   _TableScreenState createState() => _TableScreenState();
 }
 
 class _TableScreenState extends State<TableScreen> {
-  List _table;
+  List _table = [];
 
   getTable() async {
     http.Response response = await http.get(
-        'http://api.football-data.org/v2/competitions/${widget.code}/standings',
+        'http://api.football-data.org/v2/competitions/${widget.code}/standings'
+            as Uri,
         headers: {'X-Auth-Token': '86014f6025ae430dba078acc94bb2647'});
     String body = response.body;
     Map data = jsonDecode(body);
@@ -50,9 +51,9 @@ class _TableScreenState extends State<TableScreen> {
                         ),
                         team['team']['name'].toString().length > 11
                             ? Text(team['team']['name']
-                            .toString()
-                            .substring(0, 11) +
-                            '...')
+                                    .toString()
+                                    .substring(0, 11) +
+                                '...')
                             : Text(team['team']['name'].toString()),
                       ],
                     ),
@@ -92,98 +93,98 @@ class _TableScreenState extends State<TableScreen> {
   Widget build(BuildContext context) {
     return _table == null
         ? Container(
-      color: Colors.white,
-      child: Center(
-        child: CircularProgressIndicator(
-          valueColor: AlwaysStoppedAnimation<Color>(
-            Color(0xFFe70066),
-          ),
-        ),
-      ),
-    )
-        : Scaffold(
-      body: Container(
-        decoration: BoxDecoration(
-            gradient: LinearGradient(
-              colors: [
-                const Color(0xffe84860),
-                const Color(0xffe70066),
-              ],
-              begin: const FractionalOffset(0.0, 0.0),
-              end: const FractionalOffset(0.0, 1.0),
-              stops: [0.0, 1.0],
-              tileMode: TileMode.clamp,
-            )),
-        child: ListView(
-          physics: const BouncingScrollPhysics(
-              parent: AlwaysScrollableScrollPhysics()),
-          children: [
-            SizedBox(
-              height: 20,
+            color: Colors.white,
+            child: Center(
+              child: CircularProgressIndicator(
+                valueColor: AlwaysStoppedAnimation<Color>(
+                  Color(0xFFe70066),
+                ),
+              ),
             ),
-            Padding(
-              padding:
-              const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-              child: Row(
+          )
+        : Scaffold(
+            body: Container(
+              decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                colors: [
+                  const Color(0xffe84860),
+                  const Color(0xffe70066),
+                ],
+                begin: const FractionalOffset(0.0, 0.0),
+                end: const FractionalOffset(0.0, 1.0),
+                stops: [0.0, 1.0],
+                tileMode: TileMode.clamp,
+              )),
+              child: ListView(
+                physics: const BouncingScrollPhysics(
+                    parent: AlwaysScrollableScrollPhysics()),
                 children: [
-                  Expanded(
+                  SizedBox(
+                    height: 20,
+                  ),
+                  Padding(
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
                     child: Row(
                       children: [
-                        Text(
-                          'Pos',
-                          style: TextStyle(fontWeight: FontWeight.bold),
+                        Expanded(
+                          child: Row(
+                            children: [
+                              Text(
+                                'Pos',
+                                style: TextStyle(fontWeight: FontWeight.bold),
+                              ),
+                              SizedBox(
+                                width: 20,
+                              ),
+                              Text(
+                                'Club',
+                                style: TextStyle(fontWeight: FontWeight.bold),
+                              ),
+                            ],
+                          ),
                         ),
-                        SizedBox(
-                          width: 20,
-                        ),
-                        Text(
-                          'Club',
-                          style: TextStyle(fontWeight: FontWeight.bold),
+                        Expanded(
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(
+                                'PL',
+                                style: TextStyle(fontWeight: FontWeight.bold),
+                              ),
+                              Text(
+                                'W',
+                                style: TextStyle(fontWeight: FontWeight.bold),
+                              ),
+                              Text(
+                                'D',
+                                style: TextStyle(fontWeight: FontWeight.bold),
+                              ),
+                              Text(
+                                'L',
+                                style: TextStyle(fontWeight: FontWeight.bold),
+                              ),
+                              Text(
+                                'GD',
+                                style: TextStyle(fontWeight: FontWeight.bold),
+                              ),
+                              Text(
+                                'Pts',
+                                style: TextStyle(fontWeight: FontWeight.bold),
+                              ),
+                            ],
+                          ),
                         ),
                       ],
                     ),
                   ),
-                  Expanded(
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(
-                          'PL',
-                          style: TextStyle(fontWeight: FontWeight.bold),
-                        ),
-                        Text(
-                          'W',
-                          style: TextStyle(fontWeight: FontWeight.bold),
-                        ),
-                        Text(
-                          'D',
-                          style: TextStyle(fontWeight: FontWeight.bold),
-                        ),
-                        Text(
-                          'L',
-                          style: TextStyle(fontWeight: FontWeight.bold),
-                        ),
-                        Text(
-                          'GD',
-                          style: TextStyle(fontWeight: FontWeight.bold),
-                        ),
-                        Text(
-                          'Pts',
-                          style: TextStyle(fontWeight: FontWeight.bold),
-                        ),
-                      ],
-                    ),
+                  SizedBox(
+                    height: 10,
                   ),
+                  buildTable(),
                 ],
               ),
             ),
-            SizedBox(
-              height: 10,
-            ),
-            buildTable(),
-          ],
-        ),
-      ),
-    );
+          );
   }
 }
