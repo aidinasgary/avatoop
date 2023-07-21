@@ -1,10 +1,38 @@
 import 'package:flutter/material.dart';
+import 'package:untitled16/controller/httpservice.dart';
 import 'package:untitled16/home_page.dart';
-import 'package:untitled16/model/data/avatoop_fack_data.dart';
+import 'package:untitled16/model/avatoop_fack_data.dart';
 import 'package:readmore/readmore.dart';
 
-class HotNewsPage extends StatelessWidget {
-  const HotNewsPage({super.key});
+import '../model/data.dart';
+
+class HotNewsPage extends StatefulWidget {
+  HotNewsPage({super.key});
+
+  @override
+  State<HotNewsPage> createState() => _HotNewsPageState();
+}
+
+class _HotNewsPageState extends State<HotNewsPage> {
+  List<Post>? posts;
+
+  var isLoaded = false;
+
+  @override
+  void initState() {
+    super.initState();
+    // fetch data from api
+    getData();
+  }
+
+  getData() async {
+    posts = await RemoteServices().getPosts();
+    if (posts != null) {
+      setState(() {
+        isLoaded = true;
+      });
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -25,11 +53,13 @@ class HotNewsPage extends StatelessWidget {
           child: Icon(Icons.notifications),
         )
       ], leading: const Center(child: Text('Avatoop'))),
-      body: SafeArea(
+      body: Visibility(
+        visible: isLoaded,
+        replacement: const Center(child: CircularProgressIndicator()),
         child: SizedBox(
           width: double.infinity,
           child: ListView.builder(
-              itemCount: hotNews.length,
+              itemCount: posts?.length,
               scrollDirection: Axis.vertical,
               itemBuilder: (context, index) {
                 return Padding(
@@ -43,19 +73,19 @@ class HotNewsPage extends StatelessWidget {
                           width: 300,
                           height: 170,
                           child: Column(
-                            mainAxisAlignment: MainAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                hotNews[index].title,
+                                posts![index].title,
+                                maxLines: 2,
+                                overflow: TextOverflow.ellipsis,
                                 style: const TextStyle(
-                                    fontSize: 13, fontWeight: FontWeight.bold),
+                                    fontSize: 24, fontWeight: FontWeight.bold),
                               ),
-                              ReadMoreText(
-                                trimMode: TrimMode.Line,
-                                trimLines: 3,
-                                hotNews[index].subtitle.toString(),
-                                //  trimCollapsedText: "show more",
-                                //trimExpandedText: "show less",
+                              Text(
+                                posts![index].body,
+                                maxLines: 3,
+                                overflow: TextOverflow.ellipsis,
                               ),
                               const Row(
                                 mainAxisAlignment:

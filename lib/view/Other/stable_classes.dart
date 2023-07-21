@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:untitled16/model/data/avatoop_fack_data.dart';
+import 'package:untitled16/model/avatoop_fack_data.dart';
 
 import '../League_page.dart';
 import 'ertebat_screen.dart';
