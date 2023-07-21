@@ -78,7 +78,7 @@ class _HomePageState extends State<HomePage> {
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => const HotNewsPage()));
+                                    builder: (context) => HotNewsPage()));
                           },
                           child: const Text(
                             'بیشتر',

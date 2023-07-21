@@ -7,30 +7,18 @@ import 'package:http/http.dart' as http;
 class TableScreen extends StatefulWidget {
   final String code;
 
-<<<<<<< HEAD
-  const TableScreen({required Key key, required this.code}) : super(key: key);
-=======
   const TableScreen({Key? key, required this.code}) : super(key: key);
->>>>>>> 98066d970eecc64ceb1d4cff05f6abd0f0610193
   @override
   _TableScreenState createState() => _TableScreenState();
 }
 
 class _TableScreenState extends State<TableScreen> {
-<<<<<<< HEAD
   List _table = [];
 
   getTable() async {
     http.Response response = await http.get(
         'http://api.football-data.org/v2/competitions/${widget.code}/standings'
             as Uri,
-=======
-  List _table=[];
-
-  getTable() async {
-    http.Response response = await http.get(
-        'http://api.football-data.org/v2/competitions/${widget.code}/standings' as Uri,
->>>>>>> 98066d970eecc64ceb1d4cff05f6abd0f0610193
         headers: {'X-Auth-Token': '86014f6025ae430dba078acc94bb2647'});
     String body = response.body;
     Map data = jsonDecode(body);
@@ -105,56 +93,25 @@ class _TableScreenState extends State<TableScreen> {
   Widget build(BuildContext context) {
     return _table == null
         ? Container(
-<<<<<<< HEAD
             color: Colors.white,
-            child: Center(
+            child: const Center(
               child: CircularProgressIndicator(
                 valueColor: AlwaysStoppedAnimation<Color>(
                   Color(0xFFe70066),
                 ),
               ),
-=======
-      color: Colors.white,
-      child: Center(
-        child: CircularProgressIndicator(
-          valueColor: AlwaysStoppedAnimation<Color>(
-            Color(0xFFe70066),
-          ),
-        ),
-      ),
-    )
-        : Scaffold(
-      body: Container(
-        decoration: BoxDecoration(
-            gradient: LinearGradient(
-              colors: [
-                const Color(0xff59bdef),
-                const Color(0xff221bf3),
-              ],
-              begin: const FractionalOffset(0.0, 0.0),
-              end: const FractionalOffset(0.0, 1.0),
-              stops: [0.0, 1.0],
-              tileMode: TileMode.clamp,
-            )),
-        child: ListView(
-          physics: const BouncingScrollPhysics(
-              parent: AlwaysScrollableScrollPhysics()),
-          children: [
-            SizedBox(
-              height: 20,
->>>>>>> 98066d970eecc64ceb1d4cff05f6abd0f0610193
             ),
           )
         : Scaffold(
             body: Container(
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                   gradient: LinearGradient(
                 colors: [
-                  const Color(0xffe84860),
-                  const Color(0xffe70066),
+                  Color(0xffe84860),
+                  Color(0xffe70066),
                 ],
-                begin: const FractionalOffset(0.0, 0.0),
-                end: const FractionalOffset(0.0, 1.0),
+                begin: FractionalOffset(0.0, 0.0),
+                end: FractionalOffset(0.0, 1.0),
                 stops: [0.0, 1.0],
                 tileMode: TileMode.clamp,
               )),
@@ -162,12 +119,9 @@ class _TableScreenState extends State<TableScreen> {
                 physics: const BouncingScrollPhysics(
                     parent: AlwaysScrollableScrollPhysics()),
                 children: [
-                  SizedBox(
-                    height: 20,
-                  ),
-                  Padding(
-                    padding:
-                        const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                  const SizedBox(height: 20),
+                  const Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
                     child: Row(
                       children: [
                         Expanded(
@@ -221,9 +175,7 @@ class _TableScreenState extends State<TableScreen> {
                       ],
                     ),
                   ),
-                  SizedBox(
-                    height: 10,
-                  ),
+                  const SizedBox(height: 10),
                   buildTable(),
                 ],
               ),
