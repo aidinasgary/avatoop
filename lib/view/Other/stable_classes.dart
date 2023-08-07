@@ -49,6 +49,7 @@ class HotNewsListView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
+        physics: const ClampingScrollPhysics(),
         scrollDirection: Axis.vertical,
         itemCount: 4,
         itemBuilder: (context, index) => Padding(
@@ -57,13 +58,15 @@ class HotNewsListView extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
                   SizedBox(
-                      height: size.height / 9,
+                      height: size.width / 8,
                       width: size.width / 4,
-                      child: Text(hotNews[index].title)),
-                  const Spacer(),
+                      child: Text(
+                        hotNews[index].title,
+                        maxLines: 3,
+                      )),
                   Container(
-                    height: 50,
-                    width: 70,
+                    height: size.width / 5.5,
+                    width: size.width / 5.8,
                     color: Colors.blueAccent,
                   ),
                 ],
@@ -79,10 +82,13 @@ class LeaugeScores extends StatelessWidget {
   const LeaugeScores({
     super.key,
     required this.size,
+    required this.note,
+    required this.pic,
   });
 
   final Size size;
-
+  final String note;
+  final String pic;
   @override
   Widget build(BuildContext context) {
     return StableContainer(
@@ -101,14 +107,14 @@ class LeaugeScores extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
-                const Text('جدول رده بندی لیگ برتر خلیج فارس'),
+                Text(note),
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: SizedBox(
                     height: 30,
                     width: size.width / 6,
                     child: Image.asset(
-                      'assets/images/dow.png',
+                      pic,
                     ),
                   ),
                 ),

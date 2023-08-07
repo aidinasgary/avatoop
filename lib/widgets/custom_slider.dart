@@ -1,6 +1,5 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
-import 'package:untitled16/controller/slider_model.dart';
 
 class CustomSlider extends StatefulWidget {
   const CustomSlider({Key? key}) : super(key: key);
@@ -44,4 +43,17 @@ class _CustomSliderState extends State<CustomSlider> {
           )),
     );
   }
+}
+
+class SliderModels {
+  final String image;
+  SliderModels(this.image);
+
+  static final List<SliderModels> items = [
+    SliderModels('assets/images/avatoop1.jpg'),
+    SliderModels('assets/images/avatoop2.jpg'),
+    SliderModels('assets/images/avatoop3.jpg'),
+    SliderModels('assets/images/avatoop4.jpg'),
+    SliderModels('assets/images/avatoop5.jpg'),
+  ];
 }

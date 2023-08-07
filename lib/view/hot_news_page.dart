@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:untitled16/controller/httpservice.dart';
 import 'package:untitled16/home_page.dart';
 import 'package:untitled16/model/avatoop_fack_data.dart';
-import 'package:readmore/readmore.dart';
-
 import '../model/data.dart';
 
 class HotNewsPage extends StatefulWidget {

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
-import 'package:untitled16/model/avatoop_fack_data.dart';
+import 'package:untitled16/view/TableScreen.dart';
 import 'package:untitled16/view/hot_news_page.dart';
 import 'package:untitled16/view/league_page.dart';
 import 'package:untitled16/widgets/custom_slider.dart';
@@ -95,13 +95,14 @@ class _HomePageState extends State<HomePage> {
                       ],
                     ),
                   ),
+                  /////////////////////////////////////////////////////
                   // hot news text
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
                       Container(
                         height: 350,
-                        width: 220,
+                        width: size.height / 4.5,
                         decoration: BoxDecoration(
                           color: Colors.white,
                           borderRadius: BorderRadius.circular(15),
@@ -118,9 +119,10 @@ class _HomePageState extends State<HomePage> {
                           )
                         ]),
                       ),
+                      // this of two Containers that shows news
                       Container(
                         height: 350,
-                        width: 220,
+                        width: size.height / 4.5,
                         decoration: BoxDecoration(
                           color: Colors.white,
                           borderRadius: BorderRadius.circular(15),
@@ -135,6 +137,7 @@ class _HomePageState extends State<HomePage> {
                       ),
                     ],
                   ),
+                  //////////////////////////////////////////////////////////////
                   const SizedBox(height: 20),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -145,7 +148,7 @@ class _HomePageState extends State<HomePage> {
                       ),
                       GestureDetector(
                         onTap: () {
-                          Get.to(LeaguePage());
+                          Get.to(TableScreen(code: 'PPL'));
                         },
                         child: const Text(
                           'بیشتر',
@@ -169,7 +172,11 @@ class _HomePageState extends State<HomePage> {
                   ),
                   // Premier League standings
                   // ‌جدول رده بندی
-                  LeaugeScores(size: size),
+                  LeaugeScores(
+                    size: size,
+                    note: '',
+                    pic: '',
+                  ),
                   const SizedBox(height: 20),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -202,7 +209,11 @@ class _HomePageState extends State<HomePage> {
                       ),
                     ],
                   ),
-                  LeaugeScores(size: size),
+                  LeaugeScores(
+                    size: size,
+                    note: '',
+                    pic: '',
+                  ),
                   //news text
                   //  const MoreTitle(
                   //    write: Text("اخبار صوتی"),
@@ -218,6 +229,7 @@ class _HomePageState extends State<HomePage> {
                         borderRadius: BorderRadius.circular(15),
                       ),
                       child: ListView.builder(
+                        physics: const ClampingScrollPhysics(),
                         itemCount: 5,
                         scrollDirection: Axis.vertical,
                         itemBuilder: (context, index) => Padding(
