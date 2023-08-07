@@ -4,6 +4,7 @@ import 'package:percent_indicator/linear_percent_indicator.dart';
 import 'package:untitled16/view/TableScreen.dart';
 import 'package:untitled16/view/hot_news_page.dart';
 import 'package:untitled16/view/league_page.dart';
+import 'package:untitled16/view/sound_player.dart';
 import 'package:untitled16/widgets/custom_slider.dart';
 
 import 'view/Other/stable_classes.dart';
@@ -272,6 +273,7 @@ class _HomePageState extends State<HomePage> {
   }
 
   ElevatedButton newMethod(BuildContext context) {
+    // var size = MediaQuery.of(context).size;
     return ElevatedButton(
         //
         onPressed: () {
@@ -285,38 +287,15 @@ class _HomePageState extends State<HomePage> {
                       Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: Container(
-                          height: 100,
+                          height: 300,
                           width: double.infinity,
                           decoration: BoxDecoration(
                               color: Colors.purple,
                               borderRadius: BorderRadius.circular(12)),
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.spaceAround,
-                            children: [
-                              LinearPercentIndicator(
-                                percent: 1.0,
-                                backgroundColor: Colors.teal,
-                                progressColor: Colors.amber,
-                              ),
-                              const Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceAround,
-                                children: [
-                                  Icon(Icons.skip_previous_rounded,
-                                      color: Colors.white),
-                                  Icon(
-                                    Icons.play_circle_fill_rounded,
-                                    color: Colors.white,
-                                    size: 40,
-                                  ),
-                                  Icon(Icons.skip_next_rounded,
-                                      color: Colors.white),
-                                  SizedBox(),
-                                  Icon(Icons.loop_rounded, color: Colors.white),
-                                ],
-                              ),
-                            ],
-                          ),
+                          child: const SizedBox(
+                              height: 200,
+                              width: double.infinity,
+                              child: AudioPlayerScreen()),
                         ),
                       ),
                       ElevatedButton(

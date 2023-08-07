@@ -25,15 +25,15 @@ class MyApp extends StatelessWidget {
         home: //SoundPlayer(),
             // HotNewsPage(),
             //SoundPlayer(),
-            // HomeScreen(),
-            // const HomePage(),
-            const AudioPlayerScreen(),
+            //HomeScreen(),
+            const HomePage(),
+        // AudioPlayerScreen(),
         routes: {
           //JadvalMosabeghat.tag: (context) => JadvalMosabeghat(),
           ErtebatScreen.tag: (context) => const ErtebatScreen(),
           ProfileScreen.tag: (context) => const ProfileScreen(),
           login.tag: (context) => const login(),
-          SoundPlayer.tag: (context) => const SoundPlayer(),
+          // SoundPlayer.tag: (context) => const SoundPlayer(),
           LeaguePage.tag: (context) => LeaguePage()
         });
   }
