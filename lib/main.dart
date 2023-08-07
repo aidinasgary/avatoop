@@ -26,7 +26,8 @@ class MyApp extends StatelessWidget {
             // HotNewsPage(),
             //SoundPlayer(),
             // HomeScreen(),
-            const HomePage(),
+            // const HomePage(),
+            const AudioPlayerScreen(),
         routes: {
           //JadvalMosabeghat.tag: (context) => JadvalMosabeghat(),
           ErtebatScreen.tag: (context) => const ErtebatScreen(),

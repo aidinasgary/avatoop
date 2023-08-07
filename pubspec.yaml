@@ -24,6 +24,10 @@ dependencies:
   flutter_svg: ^2.0.6
   http: ^1.0.0
   readmore: ^2.2.0
+  audio_video_progress_bar: ^1.0.1
+  just_audio: ^0.9.34
+  just_audio_background: ^0.0.1-beta.10
+  rxdart: ^0.27.7
 
 dev_dependencies:
   flutter_test:
@@ -52,6 +56,7 @@ flutter:
   assets:
       - assets/images/
       - assets/images/dow.png
+      - assets/audio
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
