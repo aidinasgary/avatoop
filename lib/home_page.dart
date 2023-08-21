@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:percent_indicator/linear_percent_indicator.dart';
 import 'package:untitled16/view/TableScreen.dart';
 import 'package:untitled16/view/hot_news_page.dart';
 import 'package:untitled16/view/league_page.dart';
@@ -10,14 +9,14 @@ import 'package:untitled16/widgets/custom_slider.dart';
 import 'view/Other/stable_classes.dart';
 import 'view/new_page.dart';
 
-class HomePage extends StatefulWidget {
-  const HomePage({Key? key}) : super(key: key);
+class MobileBody extends StatefulWidget {
+  const MobileBody({Key? key}) : super(key: key);
 
   @override
-  State<HomePage> createState() => _HomePageState();
+  State<MobileBody> createState() => _MobileBodyState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _MobileBodyState extends State<MobileBody> {
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
@@ -174,6 +173,7 @@ class _HomePageState extends State<HomePage> {
                   // Premier League standings
                   // ‌جدول رده بندی
                   LeaugeScores(
+                    width: double.infinity,
                     size: size,
                     note: '',
                     pic: '',
@@ -211,6 +211,7 @@ class _HomePageState extends State<HomePage> {
                     ],
                   ),
                   LeaugeScores(
+                    width: double.infinity,
                     size: size,
                     note: '',
                     pic: '',

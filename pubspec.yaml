@@ -57,6 +57,9 @@ flutter:
       - assets/images/
       - assets/images/dow.png
       - assets/audio/Olsun_Hadise_320.mp3
+      - assets/audio/Ali Abbasi.mp3
+      - assets/audio/Anita - Kafie Bekhaam [320].mp3
+      - assets/audio/RYYZN_-_Waiting_on_You_[Copyright_Free](256k).mp3
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

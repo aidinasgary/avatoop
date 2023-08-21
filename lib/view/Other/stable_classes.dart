@@ -65,7 +65,7 @@ class HotNewsListView extends StatelessWidget {
                         maxLines: 3,
                       )),
                   Container(
-                    height: size.width / 5.5,
+                    height: size.width / 7,
                     width: size.width / 5.8,
                     color: Colors.blueAccent,
                   ),
@@ -84,16 +84,17 @@ class LeaugeScores extends StatelessWidget {
     required this.size,
     required this.note,
     required this.pic,
+    required this.width,
   });
-
+  final double width;
   final Size size;
   final String note;
   final String pic;
   @override
   Widget build(BuildContext context) {
     return StableContainer(
-      width: double.infinity,
-      height: size.width / 1.1,
+      width: width,
+      height: size.width / 1.4,
       child: Column(
         children: [
           Container(
@@ -137,13 +138,13 @@ class LeaugeScores extends StatelessWidget {
                   const Text("L"),
                   const Text("W"),
                   const Text("MP"),
-                  SizedBox(width: size.width / 2.5),
+                  SizedBox(),
+                  SizedBox(),
+                  SizedBox(),
                   const Text("باشگاه"),
                 ],
               )),
-          SizedBox(
-            height: size.width / 1.6,
-            width: double.infinity,
+          Expanded(
             child: ListView.builder(
               scrollDirection: Axis.vertical,
               itemCount: 6,
@@ -188,7 +189,7 @@ class LeaugeScores extends StatelessWidget {
                   const Text("No."),
                   const Text("No."),
                   const Text("No."),
-                  SizedBox(width: size.width / 3),
+                  SizedBox(),
                   const Icon(Icons.hot_tub),
                   const Text("No."),
                 ],

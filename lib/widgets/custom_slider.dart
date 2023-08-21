@@ -12,7 +12,7 @@ class _CustomSliderState extends State<CustomSlider> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 220,
+      height: 400,
       width: double.infinity,
       padding: const EdgeInsets.symmetric(vertical: 24.0),
       child: CarouselSlider.builder(

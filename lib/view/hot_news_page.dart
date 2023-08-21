@@ -43,7 +43,7 @@ class _HotNewsPageState extends State<HotNewsPage> {
         IconButton(
             onPressed: () {
               Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => const HomePage()));
+                  MaterialPageRoute(builder: (context) => const MobileBody()));
             },
             icon: const Icon(Icons.home_rounded)),
         const Padding(
