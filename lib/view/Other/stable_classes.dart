@@ -1,5 +1,10 @@
+import 'dart:js';
+
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:internet_connection_checker/internet_connection_checker.dart';
 import 'package:untitled16/model/avatoop_fack_data.dart';
+import 'package:untitled16/view/Other/login.dart';
 
 import '../League_page.dart';
 import 'ertebat_screen.dart';
@@ -237,14 +242,14 @@ class DrawerBoke extends StatelessWidget {
             },
           ),
           ListTile(
-            title: const Row(
+            title:  Row(
               children: [
                 Icon(Icons.account_circle),
                 Text('  حساب کاربری'),
               ],
             ),
             onTap: () {
-              // Navigator.of(context).pushNamed(login.tag);
+               Navigator.of(context).pushNamed(login.tag);
             },
           ),
           ListTile(

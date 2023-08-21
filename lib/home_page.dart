@@ -1,8 +1,15 @@
+import 'dart:async';
+import 'dart:js_interop';
+
+import 'package:connectivity_plus/connectivity_plus.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:internet_connection_checker/internet_connection_checker.dart';
+import 'package:percent_indicator/linear_percent_indicator.dart';
+import 'package:untitled16/view/League_page.dart';
 import 'package:untitled16/view/TableScreen.dart';
 import 'package:untitled16/view/hot_news_page.dart';
-import 'package:untitled16/view/league_page.dart';
 import 'package:untitled16/view/sound_player.dart';
 import 'package:untitled16/widgets/custom_slider.dart';
 
@@ -17,6 +24,33 @@ class MobileBody extends StatefulWidget {
 }
 
 class _MobileBodyState extends State<MobileBody> {
+  late StreamSubscription subscription;
+  bool isDeviceConnected = false;
+  bool isAlertSet = false;
+
+  @override
+  void initState() {
+    getConnectivity();
+    super.initState();
+  }
+
+  getConnectivity() =>
+      subscription = Connectivity().onConnectivityChanged.listen(
+        (ConnectivityResult result) async {
+          isDeviceConnected = await InternetConnectionChecker().hasConnection;
+          if (!isDeviceConnected && isAlertSet == false) {
+            showDialogBox(context as BuildContext);
+            setState(() => isAlertSet = true);
+          }
+        },
+      );
+
+  @override
+  void dispose() {
+    subscription.cancel();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
@@ -38,6 +72,7 @@ class _MobileBodyState extends State<MobileBody> {
               Column(
                 children: [
                   const CustomSlider(),
+
                   // amiri make changes here
                   //ListView---------------------------
 
@@ -261,6 +296,180 @@ class _MobileBodyState extends State<MobileBody> {
                       ),
                     ),
                   ),
+                  Container(
+                    width: double.infinity,
+                    height: 250,
+                    decoration: BoxDecoration(
+                      color: Colors.indigo,
+                      borderRadius: BorderRadius.only(
+                          topRight: Radius.circular(30),
+                          topLeft: Radius.circular(30)),
+                    ),
+                    child: Container(
+                      margin: EdgeInsets.all(30),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Column(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Row(
+                                children: [
+                                  Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: GestureDetector(
+                                      onTap: () {},
+                                      child: const SizedBox(
+                                        width: 25,
+                                        height: 25,
+                                        child: Image(
+                                          image: AssetImage(
+                                              'assets/images/img_3.png'),
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: GestureDetector(
+                                      onTap: () {},
+                                      child: const SizedBox(
+                                        width: 25,
+                                        height: 25,
+                                        child: Image(
+                                          image: AssetImage(
+                                              'assets/images/img_4.png'),
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: GestureDetector(
+                                      onTap: () {},
+                                      child: const SizedBox(
+                                        width: 25,
+                                        height: 25,
+                                        child: Image(
+                                          image: AssetImage(
+                                              'assets/images/img_5.png'),
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              Text(
+                                'Avatoop.com',
+                                style: TextStyle(
+                                    fontSize: 13,
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.w400),
+                              ),
+                              Text(
+                                'sarzaminhooshmand',
+                                style: TextStyle(
+                                    fontSize: 13,
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.w400),
+                              ),
+                              Text(
+                                '09915957342',
+                                style: TextStyle(
+                                    fontSize: 13,
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.w400),
+                              ),
+                            ],
+                          ),
+                          Column(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(
+                                'ارتباط با ما',
+                                style: TextStyle(
+                                    fontSize: 13,
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.w400),
+                              ),
+                              Text(
+                                'آی دی اینستاکرام',
+                                style: TextStyle(
+                                    fontSize: 13,
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.w400),
+                              ),
+                              Text(
+                                'آی دی تلگرام',
+                                style: TextStyle(
+                                    fontSize: 13,
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.w400),
+                              ),
+                              Text(
+                                'شماره تماس',
+                                style: TextStyle(
+                                    fontSize: 13,
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.w400),
+                              ),
+                            ],
+                          ),
+                          Column(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Row(
+                                children: [
+                                  Text(
+                                    'Avatoop',
+                                    style: TextStyle(
+                                        fontSize: 20,
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.w600),
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: Icon(
+                                      Icons.sports_soccer,
+                                      color: Colors.white,
+                                    ),
+                                  )
+                                ],
+                              ),
+                              Text(
+                                'آواتوپ، اولین وبسایت خبرگزاری صوتی',
+                                style: TextStyle(
+                                    fontSize: 10,
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold),
+                              ),
+                              Text(
+                                'ایران است که سعی دارد با استفاده',
+                                style: TextStyle(
+                                    fontSize: 10,
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold),
+                              ),
+                              Text(
+                                ' از هوش مصنوعی، راحتی شما را',
+                                style: TextStyle(
+                                    fontSize: 10,
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold),
+                              ),
+                              Text(
+                                'در شنیدن اخبار ورزشی فراهم نماید.',
+                                style: TextStyle(
+                                    fontSize: 10,
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold),
+                              ),
+                            ],
+                          )
+                        ],
+                      ),
+                    ),
+                  )
                 ],
               ),
             ],
@@ -272,6 +481,29 @@ class _MobileBodyState extends State<MobileBody> {
       drawer: const DrawerBoke(),
     );
   }
+
+  showDialogBox(BuildContext context) => showCupertinoDialog<String>(
+        context: context,
+        builder: (BuildContext context) => CupertinoAlertDialog(
+          title: const Text('No Connection'),
+          content: const Text('Please check your internet connectivity'),
+          actions: <Widget>[
+            TextButton(
+              onPressed: () async {
+                Navigator.pop(context, 'Cancel');
+                setState(() => isAlertSet = false);
+                isDeviceConnected =
+                    await InternetConnectionChecker().hasConnection;
+                if (!isDeviceConnected) {
+                  showDialogBox(context);
+                  setState(() => isAlertSet = true);
+                }
+              },
+              child: const Text('OK'),
+            ),
+          ],
+        ),
+      );
 
   ElevatedButton newMethod(BuildContext context) {
     // var size = MediaQuery.of(context).size;
@@ -328,4 +560,10 @@ Widget _pages(int index) {
       child: Center(child: Text(page[index])),
     ),
   );
+}
+
+@override
+Widget build(BuildContext context) {
+  // TODO: implement build
+  throw UnimplementedError();
 }
