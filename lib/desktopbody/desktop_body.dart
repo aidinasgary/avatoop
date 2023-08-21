@@ -32,291 +32,282 @@ class _DesktopBodyState extends State<DesktopBody> {
       ),
       body: SingleChildScrollView(
         child: Column(children: [
-          Column(
+          const CustomSlider(),
+          // amiri make changes here
+          //ListView---------------------------
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: SizedBox(
+              height: 55,
+              width: double.infinity,
+              child: ListView.custom(
+                scrollDirection: Axis.horizontal,
+                childrenDelegate: SliverChildListDelegate([
+                  GestureDetector(
+                      onTap: () => Get.to(HotNewsPage()), child: _pages(0)),
+                  GestureDetector(onTap: () => {}, child: _pages(1)),
+                  GestureDetector(onTap: () {}, child: _pages(2)),
+                  GestureDetector(
+                      onTap: () => Get.to(LeaguePage()), child: _pages(3)),
+                ]),
+              ),
+            ),
+          ),
+          //----------------------------------------------
+
+          // hot news text
+          Padding(
+            padding: const EdgeInsets.fromLTRB(20, 8, 30, 8),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                const Icon(
+                  Icons.keyboard_double_arrow_left_rounded,
+                  color: Colors.blue,
+                ),
+                GestureDetector(
+                  onTap: () {
+                    Get.to(HotNewsPage());
+                  },
+                  child: const Text(
+                    'بیشتر',
+                    style: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.w500,
+                        color: Colors.blue),
+                  ),
+                ),
+                const Spacer(),
+                const Text(
+                  "اخبار داغ !",
+                  textDirection: TextDirection.rtl,
+                  style: TextStyle(
+                    // fontFamily: 'dubai',
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ],
+            ),
+          ),
+          /////////////////////////////////////////////////////
+          // hot news text
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              Column(
-                children: [
-                  const CustomSlider(),
-                  // amiri make changes here
-                  //ListView---------------------------
-
-                  SizedBox(
-                    height: 55,
-                    width: double.infinity,
-                    child: ListView.custom(
-                      scrollDirection: Axis.horizontal,
-                      childrenDelegate: SliverChildListDelegate([
-                        GestureDetector(
-                            onTap: () => Get.to(HotNewsPage()),
-                            child: _pages(0)),
-                        GestureDetector(onTap: () => {}, child: _pages(1)),
-                        GestureDetector(onTap: () {}, child: _pages(2)),
-                        GestureDetector(
-                            onTap: () => Get.to(LeaguePage()),
-                            child: _pages(3)),
-                      ]),
-                    ),
-                  ),
-                  //----------------------------------------------
-
-                  // hot news text
-                  Padding(
-                    padding: const EdgeInsets.fromLTRB(20, 8, 30, 8),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        const Icon(
-                          Icons.keyboard_double_arrow_left_rounded,
-                          color: Colors.blue,
-                        ),
-                        GestureDetector(
-                          onTap: () {
-                            Get.to(HotNewsPage());
-                          },
-                          child: const Text(
-                            'بیشتر',
-                            style: TextStyle(
-                                fontSize: 20,
-                                fontWeight: FontWeight.w500,
-                                color: Colors.blue),
-                          ),
-                        ),
-                        const Spacer(),
-                        const Text(
-                          "اخبار داغ !",
-                          textDirection: TextDirection.rtl,
-                          style: TextStyle(
-                            // fontFamily: 'dubai',
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  /////////////////////////////////////////////////////
-                  // hot news text
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      Container(
-                        height: size.width / 1.6,
-                        width: size.width / 2.2,
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(15),
-                        ),
-                        child: Column(children: [
-                          Expanded(
-                            child: GestureDetector(
-                                onTap: () {
-                                  Get.to(const NewsPage());
-                                },
-                                child: HotNewsListView(size: size)),
-                          )
-                        ]),
-                      ),
-                      // this of two Containers that shows news
-                      Container(
-                        height: size.width / 1.6,
-                        width: size.width / 2.2,
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(15),
-                        ),
-                        child: Expanded(
-                          child: GestureDetector(
-                              onTap: () {}, child: HotNewsListView(size: size)),
-                        ),
-                      ),
-                    ],
-                  ),
-                  //////////////////////////////////////////////////////////////
-                  const SizedBox(height: 20),
-                  Padding(
-                    padding: const EdgeInsets.fromLTRB(20, 8, 20, 8.0),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        const Icon(
-                          Icons.keyboard_double_arrow_left_rounded,
-                          color: Colors.blue,
-                        ),
-                        GestureDetector(
-                          onTap: () {
-                            Get.to(TableScreen(code: 'PPL'));
-                          },
-                          child: const Text(
-                            'بیشتر',
-                            style: TextStyle(
-                                fontSize: 20,
-                                fontWeight: FontWeight.w500,
-                                color: Colors.blue),
-                          ),
-                        ),
-                        const Spacer(),
-                        const Text(
-                          "لیگ ایران و اسپانیا",
-                          textDirection: TextDirection.rtl,
-                          style: TextStyle(
-                            // fontFamily: 'dubai',
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  // Premier League standings
-                  // ‌جدول رده بندی
-                  Row(
-                    children: [
-                      LeaugeScores(
-                        width: size.width / 2.15,
-                        size: size,
-                        note: '',
-                        pic: '',
-                      ),
-                      LeaugeScores(
-                        width: size.width / 2.15,
-                        size: size,
-                        note: '',
-                        pic: '',
-                      ),
-                    ],
-                  ),
-                  const SizedBox(height: 20),
-                  // more botton
-                  Padding(
-                    padding: const EdgeInsets.fromLTRB(20, 8, 20, 8),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        const Icon(
-                          Icons.keyboard_double_arrow_left_rounded,
-                          color: Colors.blue,
-                        ),
-                        GestureDetector(
-                          onTap: () {
-                            Get.to(LeaguePage());
-                          },
-                          child: const Text(
-                            'بیشتر',
-                            style: TextStyle(
-                                fontSize: 20,
-                                fontWeight: FontWeight.w500,
-                                color: Colors.blue),
-                          ),
-                        ),
-                        const Spacer(),
-                        const Text(
-                          "لیگ انگلستان و فرانسه",
-                          textDirection: TextDirection.rtl,
-                          style: TextStyle(
-                            // fontFamily: 'dubai',
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  // leauge scores
-                  Row(
-                    children: [
-                      LeaugeScores(
-                        width: size.width / 2.15,
-                        size: size,
-                        note: '',
-                        pic: '',
-                      ),
-                      LeaugeScores(
-                        width: size.width / 2.15,
-                        size: size,
-                        note: '',
-                        pic: '',
-                      ),
-                    ],
-                  ),
-
-                  Padding(
-                    padding: const EdgeInsets.fromLTRB(20, 8, 20, 8),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        const Icon(
-                          Icons.keyboard_double_arrow_left_rounded,
-                          color: Colors.blue,
-                        ),
-                        GestureDetector(
-                          onTap: () {
-                            Get.to(LeaguePage());
-                          },
-                          child: const Text(
-                            'بیشتر',
-                            style: TextStyle(
-                                fontSize: 20,
-                                fontWeight: FontWeight.w500,
-                                color: Colors.blue),
-                          ),
-                        ),
-                        const Spacer(),
-                        const Text(
-                          "اخبار صوتی",
-                          textDirection: TextDirection.rtl,
-                          style: TextStyle(
-                            // fontFamily: 'dubai',
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-
-                  Padding(
-                    padding: const EdgeInsets.all(20.0),
-                    child: Container(
-                      width: double.infinity,
-                      height: 400,
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(15),
-                      ),
-                      child: ListView.builder(
-                        physics: const ClampingScrollPhysics(),
-                        itemCount: 5,
-                        scrollDirection: Axis.vertical,
-                        itemBuilder: (context, index) => Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Container(
-                              margin:
-                                  const EdgeInsets.symmetric(horizontal: 10),
-                              height: 50,
-                              width: double.infinity,
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.end,
-                                children: [
-                                  Padding(
-                                    padding: const EdgeInsets.all(8.0),
-                                    child: newMethod(context),
-                                    // Widget001(),
-                                  ),
-                                  const Spacer(),
-                                  const Text("How is thbest in Eourp"),
-                                  const Icon(
-                                    Icons.mic,
-                                    color: Colors.blue,
-                                  ),
-                                ],
-                              )),
-                        ),
-                      ),
-                    ),
-                  ),
-                ],
+              Container(
+                height: size.width / 1.6,
+                width: size.width / 2.2,
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(15),
+                ),
+                child: Column(children: [
+                  Expanded(
+                    child: GestureDetector(
+                        onTap: () {
+                          Get.to(const NewsPage());
+                        },
+                        child: HotNewsListView(size: size)),
+                  )
+                ]),
+              ),
+              // this of two Containers that shows news
+              Container(
+                height: size.width / 1.6,
+                width: size.width / 2.2,
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(15),
+                ),
+                child: Expanded(
+                  child: GestureDetector(
+                      onTap: () {}, child: HotNewsListView(size: size)),
+                ),
               ),
             ],
+          ),
+          //////////////////////////////////////////////////////////////
+          const SizedBox(height: 20),
+          Padding(
+            padding: const EdgeInsets.fromLTRB(20, 8, 20, 8.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                const Icon(
+                  Icons.keyboard_double_arrow_left_rounded,
+                  color: Colors.blue,
+                ),
+                GestureDetector(
+                  onTap: () {
+                    Get.to(TableScreen(code: 'PPL'));
+                  },
+                  child: const Text(
+                    'بیشتر',
+                    style: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.w500,
+                        color: Colors.blue),
+                  ),
+                ),
+                const Spacer(),
+                const Text(
+                  "لیگ ایران و اسپانیا",
+                  textDirection: TextDirection.rtl,
+                  style: TextStyle(
+                    // fontFamily: 'dubai',
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ],
+            ),
+          ),
+          // Premier League standings
+          // ‌جدول رده بندی
+          Row(
+            children: [
+              LeaugeScores(
+                width: size.width / 2.15,
+                size: size,
+                note: '',
+                pic: '',
+              ),
+              LeaugeScores(
+                width: size.width / 2.15,
+                size: size,
+                note: '',
+                pic: '',
+              ),
+            ],
+          ),
+          const SizedBox(height: 20),
+          // more botton
+          Padding(
+            padding: const EdgeInsets.fromLTRB(20, 8, 20, 8),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                const Icon(
+                  Icons.keyboard_double_arrow_left_rounded,
+                  color: Colors.blue,
+                ),
+                GestureDetector(
+                  onTap: () {
+                    Get.to(LeaguePage());
+                  },
+                  child: const Text(
+                    'بیشتر',
+                    style: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.w500,
+                        color: Colors.blue),
+                  ),
+                ),
+                const Spacer(),
+                const Text(
+                  "لیگ انگلستان و فرانسه",
+                  textDirection: TextDirection.rtl,
+                  style: TextStyle(
+                    // fontFamily: 'dubai',
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ],
+            ),
+          ),
+          // leauge scores
+          Row(
+            children: [
+              LeaugeScores(
+                width: size.width / 2.15,
+                size: size,
+                note: '',
+                pic: '',
+              ),
+              LeaugeScores(
+                width: size.width / 2.15,
+                size: size,
+                note: '',
+                pic: '',
+              ),
+            ],
+          ),
+
+          Padding(
+            padding: const EdgeInsets.fromLTRB(20, 8, 20, 8),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                const Icon(
+                  Icons.keyboard_double_arrow_left_rounded,
+                  color: Colors.blue,
+                ),
+                GestureDetector(
+                  onTap: () {
+                    Get.to(LeaguePage());
+                  },
+                  child: const Text(
+                    'بیشتر',
+                    style: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.w500,
+                        color: Colors.blue),
+                  ),
+                ),
+                const Spacer(),
+                const Text(
+                  "اخبار صوتی",
+                  textDirection: TextDirection.rtl,
+                  style: TextStyle(
+                    // fontFamily: 'dubai',
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ],
+            ),
+          ),
+
+          Padding(
+            padding: const EdgeInsets.all(20.0),
+            child: Container(
+              width: double.infinity,
+              height: 400,
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(15),
+              ),
+              child: ListView.builder(
+                physics: const ClampingScrollPhysics(),
+                itemCount: 5,
+                scrollDirection: Axis.vertical,
+                itemBuilder: (context, index) => Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Container(
+                      margin: const EdgeInsets.symmetric(horizontal: 10),
+                      height: 50,
+                      width: double.infinity,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: newMethod(context),
+                            // Widget001(),
+                          ),
+                          const Spacer(),
+                          const Text("How is thbest in Eourp"),
+                          const Icon(
+                            Icons.mic,
+                            color: Colors.blue,
+                          ),
+                        ],
+                      )),
+                ),
+              ),
+            ),
           )
         ]),
       ),
