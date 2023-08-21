@@ -73,7 +73,8 @@ class _HomePageState extends State<HomePage> {
             children: [
               Column(
                 children: [
-                  const CustomSlider(),
+                 const CustomSlider(),
+
                   // amiri make changes here
                   //ListView---------------------------
 
@@ -295,7 +296,104 @@ class _HomePageState extends State<HomePage> {
                       ),
                     ),
                   ),
+                  Container(
 
+                    width: double.infinity,
+                    height:250,
+                    decoration: BoxDecoration(
+                      color: Colors.indigo,
+                      borderRadius: BorderRadius.only(topRight: Radius.circular(30),topLeft: Radius.circular(30)),
+                    ),
+                    child: Container(
+                      margin: EdgeInsets.all(30),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Column(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                             Row(
+
+                               children: [
+                                 Padding(
+                                   padding: const EdgeInsets.all(8.0),
+                                   child: GestureDetector(
+                                   onTap: () {},
+                                   child: const SizedBox(
+                                     width: 25,
+                                     height: 25,
+                                     child: Image(
+                                       image: AssetImage('assets/images/img_3.png'),
+                                     ),
+                                   ),
+                               ),
+                                 ),
+                                 Padding(
+                                   padding: const EdgeInsets.all(8.0),
+                                   child: GestureDetector(
+                                     onTap: () {},
+                                     child: const SizedBox(
+                                       width: 25,
+                                       height:25,
+                                       child: Image(
+                                         image: AssetImage('assets/images/img_4.png'),
+                                       ),
+                                     ),
+                                   ),
+                                 ),
+                                 Padding(
+                                   padding: const EdgeInsets.all(8.0),
+                                   child: GestureDetector(
+                                     onTap: () {},
+                                     child: const SizedBox(
+                                       width: 25,
+                                       height: 25,
+                                       child: Image(
+                                         image: AssetImage('assets/images/img_5.png'),
+                                       ),
+                                     ),
+                                   ),
+                                 ),
+                               ],
+                             ),
+                              Text('Avatoop.com',style: TextStyle(fontSize: 13,color: Colors.white,fontWeight: FontWeight.w400),),
+                              Text('sarzaminhooshmand',style: TextStyle(fontSize: 13,color: Colors.white,fontWeight: FontWeight.w400),),
+                              Text('09915957342',style: TextStyle(fontSize: 13,color: Colors.white,fontWeight: FontWeight.w400),),
+                            ],
+                          ),
+                          Column(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text('ارتباط با ما',style: TextStyle(fontSize: 13,color: Colors.white,fontWeight: FontWeight.w400),),
+                              Text('آی دی اینستاکرام',style: TextStyle(fontSize: 13,color: Colors.white,fontWeight: FontWeight.w400),),
+                              Text('آی دی تلگرام',style: TextStyle(fontSize: 13,color: Colors.white,fontWeight: FontWeight.w400),),
+                              Text('شماره تماس',style: TextStyle(fontSize: 13,color: Colors.white,fontWeight: FontWeight.w400),),
+                            ],
+                          ),
+                          Column(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Row(
+                                children: [
+                                  Text('Avatoop',style: TextStyle(fontSize: 20,color: Colors.white,fontWeight: FontWeight.w600),),
+                                  Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: Icon(Icons.sports_soccer,color: Colors.white,),
+                                  )
+                                ],
+                              ),
+
+                              Text('آواتوپ، اولین وبسایت خبرگزاری صوتی',style: TextStyle(fontSize: 10,color: Colors.white,fontWeight: FontWeight.bold),),
+                              Text('ایران است که سعی دارد با استفاده',style: TextStyle(fontSize: 10,color: Colors.white,fontWeight: FontWeight.bold),),
+                              Text(' از هوش مصنوعی، راحتی شما را',style: TextStyle(fontSize: 10,color: Colors.white,fontWeight: FontWeight.bold),),
+                              Text('در شنیدن اخبار ورزشی فراهم نماید.',style: TextStyle(fontSize: 10,color: Colors.white,fontWeight: FontWeight.bold),),
+                            ],
+                          )
+
+                        ],
+                      ),
+                    ),
+                  )
                 ],
               ),
             ],
