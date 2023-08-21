@@ -1,35 +1,7 @@
-/*import 'package:audio_video_progress_bar/audio_video_progress_bar.dart';
+import 'package:audio_video_progress_bar/audio_video_progress_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_rx/get_rx.dart';
 import 'package:just_audio/just_audio.dart';
-
-class SoundPlayer extends StatelessWidget {
-  const SoundPlayer({super.key});
-  static const String tag = '/SoundPlayerRoute';
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: ListView.builder(
-          scrollDirection: Axis.vertical,
-          itemCount: 20,
-          itemBuilder: (context, index) {
-            return Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Container(
-                decoration: BoxDecoration(
-                    color: Colors.indigo,
-                    borderRadius: BorderRadius.circular(15)),
-                child: const ListTile(
-                  leading: Icon(Icons.abc),
-                  title: Text("data"),
-                  trailing: Icon(Icons.play_arrow_rounded),
-                ),
-              ),
-            );
-          }),
-    );
-  }
-}
 
 class AudioPlayerScreen extends StatefulWidget {
   const AudioPlayerScreen({super.key});
@@ -40,15 +12,15 @@ class AudioPlayerScreen extends StatefulWidget {
 
 class _AudioPlayerScreenState extends State<AudioPlayerScreen> {
   late AudioPlayer _audioPlayer;
-
+/*
   Stream<PositionData> get _positionDataStream =>
       Rx.combineLatest3<Duration, Duration, Duration?, PositionData>(
           _audioPlayer.positionStream,
           _audioPlayer.bufferedPositionStream,
           _audioPlayer.durationStream,
           (position, bufferedPosition, duration) => PositionData(
-              position, bufferedPosition, duration ?? Duration.zero));
-
+             * position, bufferedPosition, duration ?? Duration.zero));
+*/
   @override
   void initState() {
     super.initState();
@@ -64,32 +36,40 @@ class _AudioPlayerScreenState extends State<AudioPlayerScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.purple,
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           StreamBuilder<PositionData>(
-              stream: _positionDataStream,
+              //  stream: _positionDataStream,
               builder: (context, snapshot) {
-                final positionData = snapshot.data;
-                return ProgressBar(
-                  barHeight: 8,
-                  baseBarColor: Colors.grey[600],
-                  bufferedBarColor: Colors.grey,
-                  progressBarColor: Colors.red,
-                  thumbColor: Colors.red,
-                  timeLabelTextStyle: const TextStyle(
-                    color: Colors.white,
-                    fontWeight: FontWeight.w600
-                  ),
-                    progress: positionData?.position ?? Duration.zero,
-                    buffered: positionData?.bufferedPosition ?? Duration.zero,
-                    total: positionData?.duration ?? Duration.zero,
-                    onSeek: _audioPlayer.seek,
-                    );
-              }),
-          Controll(
-            audioPlayer: _audioPlayer,
-          )
+            final positionData = snapshot.data;
+            return ProgressBar(
+              barHeight: 8,
+              baseBarColor: Colors.white,
+              bufferedBarColor: Colors.grey,
+              progressBarColor: Colors.red,
+              thumbColor: Colors.red,
+              timeLabelTextStyle: const TextStyle(
+                  color: Colors.white, fontWeight: FontWeight.w600),
+              progress: positionData?.position ?? Duration.zero,
+              buffered: positionData?.bufferedPosition ?? Duration.zero,
+              total: positionData?.duration ?? Duration.zero,
+              onSeek: _audioPlayer.seek,
+            );
+          }),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              Icon(Icons.skip_previous_rounded, color: Colors.white),
+              Controll(
+                audioPlayer: _audioPlayer,
+              ),
+              Icon(Icons.skip_next_rounded, color: Colors.white),
+              SizedBox(),
+              Icon(Icons.loop_rounded, color: Colors.white),
+            ],
+          ),
         ],
       ),
     );
@@ -137,4 +117,3 @@ class Controll extends StatelessWidget {
         });
   }
 }
-*/
