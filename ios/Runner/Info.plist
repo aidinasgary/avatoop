@@ -50,7 +50,11 @@
 	<key>NSAppTransportSecurity</key>
 	<dict>
 	  <key>NSAllowsArbitraryLoads</key>
-	  <true/>
+	  <true />
 	</dict>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>audio</string>
+	</array>
   </dict>
 </plist>
