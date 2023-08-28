@@ -1,13 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:get/get.dart';
-import 'package:untitled16/desktopbody/desktop_body.dart';
+import 'package:just_audio_background/just_audio_background.dart';
+import 'package:untitled16/desktop_body.dart';
+import 'package:untitled16/mobile_body.dart';
 import 'package:untitled16/view/League_page.dart';
-import 'package:untitled16/view/Other/ertebat_screen.dart';
-import 'package:untitled16/view/Other/login.dart';
-import 'package:untitled16/view/Other/profile_screen.dart';
+import 'package:untitled16/view/folder01/ertebat_screen.dart';
+import 'package:untitled16/view/folder01/login.dart';
+import 'package:untitled16/view/folder01/profile_screen.dart';
+import 'package:untitled16/view/folder02/sound_player.dart';
 
-void main() {
+Future<void> main() async {
+  await JustAudioBackground.init(
+    androidNotificationChannelId: 'com.ryanheise.bg_demo.channel.audio',
+    androidNotificationChannelName: 'Audio playback',
+    androidNotificationOngoing: true,
+  );
+  WidgetsFlutterBinding.ensureInitialized();
   runApp(const MyApp());
 }
 
@@ -22,11 +31,14 @@ class MyApp extends StatelessWidget {
           primarySwatch: Colors.blue,
         ),
         debugShowCheckedModeBanner: false,
-        home: //SoundPlayer(),
+        home:
+            //SoundPlayer(),
             // HotNewsPage(),
             //SoundPlayer(),
             //HomeScreen(),
-            const DesktopBody(),
+            // AudioPlayerScreen(),
+            MobileBody(),
+        // const DesktopBody(),
         // AudioPlayerScreen(),
         routes: {
           //JadvalMosabeghat.tag: (context) => JadvalMosabeghat(),
