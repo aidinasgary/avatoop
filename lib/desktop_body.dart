@@ -4,22 +4,23 @@ import 'package:untitled16/view/folder02/TableScreen.dart';
 import 'package:untitled16/view/folder02/hot_news_page.dart';
 import 'package:untitled16/view/folder02/league_page.dart';
 import 'package:untitled16/view/folder02/sound_player.dart';
-import 'package:untitled16/widgets/custom_slider.dart';
 import 'view/folder01/stable_classes.dart';
 import 'view/folder02/new_page.dart';
 
-class DesktopBody extends StatefulWidget {
+class DesktopBody extends StatelessWidget {
   const DesktopBody({Key? key}) : super(key: key);
 
   @override
-  State<DesktopBody> createState() => _DesktopBodyState();
-}
-
-class _DesktopBodyState extends State<DesktopBody> {
-  @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
-
+    List image = [
+      //"assets/images/seraie_a_league.jpg",
+      "assets/images/premier_league.png",
+      "assets/images/ligue_1.png",
+      "assets/images/laliga_league.png",
+      //"assets/images/Bundesliga_league.png",
+      //"assets/images/azadegan_league.jpg "
+    ];
     return Scaffold(
       backgroundColor: Colors.grey[200],
       appBar: AppBar(
@@ -44,7 +45,8 @@ class _DesktopBodyState extends State<DesktopBody> {
                 scrollDirection: Axis.horizontal,
                 childrenDelegate: SliverChildListDelegate([
                   GestureDetector(
-                      onTap: () => Get.to(HotNewsPage()), child: _pages(0)),
+                      onTap: () => Get.to(const HotNewsPage()),
+                      child: _pages(0)),
                   GestureDetector(onTap: () => {}, child: _pages(1)),
                   GestureDetector(onTap: () {}, child: _pages(2)),
                   GestureDetector(
@@ -67,7 +69,7 @@ class _DesktopBodyState extends State<DesktopBody> {
                 ),
                 GestureDetector(
                   onTap: () {
-                    Get.to(HotNewsPage());
+                    Get.to(const HotNewsPage());
                   },
                   child: const Text(
                     'بیشتر',
@@ -96,43 +98,96 @@ class _DesktopBodyState extends State<DesktopBody> {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               Container(
-                height: size.width / 1.6,
-                width: size.width / 2.2,
+                height: size.width / 2.0,
+                width: size.width / 3.1,
                 decoration: BoxDecoration(
-                  color: Colors.white,
+                  color: Colors.green,
                   borderRadius: BorderRadius.circular(15),
                 ),
-                child: Column(children: [
-                  Expanded(
-                    child: GestureDetector(
-                        onTap: () {
-                          Get.to(const NewsPage());
-                        },
-                        child: HotNewsListView(size: size)),
-                  )
-                ]),
+                child: const Column(children: []),
               ),
-              // this of two Containers that shows news
-              Container(
-                height: size.width / 1.6,
-                width: size.width / 2.2,
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(15),
-                ),
-                child: Expanded(
-                  child: GestureDetector(
-                      onTap: () {}, child: HotNewsListView(size: size)),
-                ),
+              Column(
+                children: [
+                  Row(
+                    children: [
+                      Container(
+                        height: size.width / 3.0,
+                        width: size.width / 3.2,
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(15),
+                        ),
+                        child: Expanded(
+                          child: GestureDetector(
+                              onTap: () {
+                                Get.to(const NewsPage());
+                              },
+                              child: HotNewsListView(size: size)),
+                        ),
+                      ),
+                      const SizedBox(width: 12),
+                      // this of two Containers that shows news
+                      Container(
+                        height: size.width / 3.0,
+                        width: size.width / 3.2,
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(15),
+                        ),
+                        child: Expanded(
+                          child: GestureDetector(
+                              onTap: () {}, child: HotNewsListView(size: size)),
+                        ),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: 10),
+                  // this of two Containers that shows news
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Container(
+                      height: size.width / 6.5,
+                      width: size.width / 1.6,
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(15),
+                      ),
+                    ),
+                  ),
+                ],
               ),
             ],
           ),
+          const SizedBox(height: 10),
+          SizedBox(
+            height: size.height / 4.0,
+            width: double.infinity,
+            child: ListView.builder(
+              scrollDirection: Axis.horizontal,
+              itemCount: image.length,
+              itemBuilder: (context, index) => Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Container(
+                  height: size.height / 4.0,
+                  width: size.height / 4.0,
+                  decoration: BoxDecoration(
+                      image: DecorationImage(
+                          image: AssetImage(
+                            image[index],
+                          ),
+                          fit: BoxFit.cover),
+                      borderRadius: BorderRadius.circular(10)),
+                ),
+              ),
+            ),
+          ),
+
           //////////////////////////////////////////////////////////////
-          const SizedBox(height: 20),
+          const SizedBox(height: 10),
           Padding(
             padding: const EdgeInsets.fromLTRB(20, 8, 20, 8.0),
             child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 const Icon(
                   Icons.keyboard_double_arrow_left_rounded,
@@ -150,9 +205,29 @@ class _DesktopBodyState extends State<DesktopBody> {
                         color: Colors.blue),
                   ),
                 ),
-                const Spacer(),
+                const SizedBox(),
                 const Text(
-                  "لیگ ایران و اسپانیا",
+                  "لیگ ایران  ",
+                  textDirection: TextDirection.rtl,
+                  style: TextStyle(
+                    // fontFamily: 'dubai',
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                const SizedBox(),
+                const Text(
+                  "  لیگ اسپانیا",
+                  textDirection: TextDirection.rtl,
+                  style: TextStyle(
+                    // fontFamily: 'dubai',
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                const SizedBox(),
+                const Text(
+                  "  لیگ عربستان",
                   textDirection: TextDirection.rtl,
                   style: TextStyle(
                     // fontFamily: 'dubai',
@@ -166,27 +241,38 @@ class _DesktopBodyState extends State<DesktopBody> {
           // Premier League standings
           // ‌جدول رده بندی
           Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              LeaugeScores(
-                width: size.width / 2.15,
+              LeaugeWidget(
                 size: size,
-                note: '',
-                pic: '',
+                A: size.width / 2.0,
+                B: size.width / 3.1,
+                C: 50,
+                D: double.infinity,
               ),
-              LeaugeScores(
-                width: size.width / 2.15,
+              LeaugeWidget(
                 size: size,
-                note: '',
-                pic: '',
+                A: size.width / 2.0,
+                B: size.width / 3.1,
+                C: 50,
+                D: double.infinity,
               ),
+              LeaugeWidget(
+                size: size,
+                A: size.width / 2.0,
+                B: size.width / 3.1,
+                C: 50,
+                D: double.infinity,
+              )
             ],
           ),
           const SizedBox(height: 20),
+          //////////////////////////////////////////////////////////////////////
           // more botton
           Padding(
             padding: const EdgeInsets.fromLTRB(20, 8, 20, 8),
             child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 const Icon(
                   Icons.keyboard_double_arrow_left_rounded,
@@ -194,7 +280,7 @@ class _DesktopBodyState extends State<DesktopBody> {
                 ),
                 GestureDetector(
                   onTap: () {
-                    Get.to(LeaguePage());
+                    Get.to(const LeaguePage());
                   },
                   child: const Text(
                     'بیشتر',
@@ -204,9 +290,26 @@ class _DesktopBodyState extends State<DesktopBody> {
                         color: Colors.blue),
                   ),
                 ),
-                const Spacer(),
                 const Text(
-                  "لیگ انگلستان و فرانسه",
+                  "لیگ انگلستان  ",
+                  textDirection: TextDirection.rtl,
+                  style: TextStyle(
+                    // fontFamily: 'dubai',
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                const Text(
+                  "  لیگ فرانسه",
+                  textDirection: TextDirection.rtl,
+                  style: TextStyle(
+                    // fontFamily: 'dubai',
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                const Text(
+                  "  لیگ ایتالیا",
                   textDirection: TextDirection.rtl,
                   style: TextStyle(
                     // fontFamily: 'dubai',
@@ -217,21 +320,32 @@ class _DesktopBodyState extends State<DesktopBody> {
               ],
             ),
           ),
+          //////////////////////////////////////////////////////////////////////
           // leauge scores
           Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              LeaugeScores(
-                width: size.width / 2.15,
+              LeaugeWidget(
                 size: size,
-                note: '',
-                pic: '',
+                A: size.width / 2.0,
+                B: size.width / 3.1,
+                C: 50,
+                D: double.infinity,
               ),
-              LeaugeScores(
-                width: size.width / 2.15,
+              LeaugeWidget(
                 size: size,
-                note: '',
-                pic: '',
+                A: size.width / 2.0,
+                B: size.width / 3.1,
+                C: 50,
+                D: double.infinity,
               ),
+              LeaugeWidget(
+                size: size,
+                A: size.width / 2.0,
+                B: size.width / 3.1,
+                C: 50,
+                D: double.infinity,
+              )
             ],
           ),
 
@@ -246,7 +360,7 @@ class _DesktopBodyState extends State<DesktopBody> {
                 ),
                 GestureDetector(
                   onTap: () {
-                    Get.to(LeaguePage());
+                    Get.to(const LeaguePage());
                   },
                   child: const Text(
                     'بیشتر',
@@ -270,55 +384,18 @@ class _DesktopBodyState extends State<DesktopBody> {
             ),
           ),
 
-          Padding(
-            padding: const EdgeInsets.all(20.0),
-            child: Container(
-              width: double.infinity,
-              height: 400,
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(15),
-              ),
-              child: ListView.builder(
-                physics: const ClampingScrollPhysics(),
-                itemCount: 5,
-                scrollDirection: Axis.vertical,
-                itemBuilder: (context, index) => Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Container(
-                      margin: const EdgeInsets.symmetric(horizontal: 10),
-                      height: 50,
-                      width: double.infinity,
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.end,
-                        children: [
-                          Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: IconButton(
-                                onPressed: () {
-                                  Get.to(const AudioPlayerScreen());
-                                },
-                                icon: const Icon(Icons.play_arrow_rounded),
-                              )
-                              // newMethod(context),
-                              // Widget001(),
-                              ),
-                          const Spacer(),
-                          const Text("How is thbest in Eourp"),
-                          const Icon(
-                            Icons.mic,
-                            color: Colors.blue,
-                          ),
-                        ],
-                      )),
-                ),
-              ),
-            ),
+          const Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              VoiceWid(),
+              VoiceWid(),
+            ],
           ),
 
+          const SizedBox(height: 15), const SizedBox(height: 15),
           Container(
             width: double.infinity,
-            height: 250,
+            height: size.height / 2.0,
             decoration: const BoxDecoration(
               color: Colors.indigo,
               borderRadius: BorderRadius.only(
@@ -485,68 +562,81 @@ class _DesktopBodyState extends State<DesktopBody> {
                 ],
               ),
             ),
-          )
+          ),
         ]),
       ),
       //
       // drawer
-      drawer: const DrawerBoke(),
     );
   }
 
-  ElevatedButton newMethod(BuildContext context) {
-    // var size = MediaQuery.of(context).size;
-    return ElevatedButton(
-        //
-        onPressed: () {
-          showModalBottomSheet(
-              context: context,
-              builder: (context) {
-                return SizedBox(
-                  height: 400,
-                  child: Column(
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Container(
-                          height: 300,
-                          width: double.infinity,
-                          decoration: BoxDecoration(
-                              color: Colors.purple,
-                              borderRadius: BorderRadius.circular(12)),
-                          child: const SizedBox(
-                              height: 200,
-                              width: double.infinity,
-                              child: AudioPlayerScreen()),
-                        ),
-                      ),
-                      ElevatedButton(
-                          onPressed: () {
-                            Navigator.pop(context);
-                          },
-                          child: const Text('Cluse')),
-                    ],
-                  ),
-                );
-              });
-        },
-        child: const Icon(Icons.play_arrow_rounded));
+  Widget _pages(int index) {
+    final List page = ["News", "Audio", "Match", "Leauge"];
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Container(
+        width: 100,
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(12),
+          //  border:
+          // Border.all(color: Colors.black12, width: 1),
+        ),
+        child: Center(child: Text(page[index])),
+      ),
+    );
   }
 }
 
-Widget _pages(int index) {
-  final List page = ["News", "Audio", "Match", "Leauge"];
-  return Padding(
-    padding: const EdgeInsets.all(8.0),
-    child: Container(
-      width: 100,
+class VoiceWid extends StatelessWidget {
+  const VoiceWid({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    var size = MediaQuery.of(context).size;
+    return Container(
+      width: size.width / 2.1,
+      height: size.height / 1.5,
       decoration: BoxDecoration(
         color: Colors.white,
-        borderRadius: BorderRadius.circular(12),
-        //  border:
-        // Border.all(color: Colors.black12, width: 1),
+        borderRadius: BorderRadius.circular(15),
       ),
-      child: Center(child: Text(page[index])),
-    ),
-  );
+      child: ListView.builder(
+        physics: const ClampingScrollPhysics(),
+        itemCount: 5,
+        scrollDirection: Axis.vertical,
+        itemBuilder: (context, index) => Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Container(
+              margin: const EdgeInsets.symmetric(horizontal: 10),
+              height: 50,
+              width: 100,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: IconButton(
+                        onPressed: () {
+                          Get.to(const AudioPlayerScreen());
+                        },
+                        icon: const Icon(Icons.play_arrow_rounded),
+                      )
+                      // newMethod(context),
+                      // Widget001(),
+                      ),
+                  const Spacer(),
+                  const Text("How is thbest in Eourp"),
+                  const Icon(
+                    Icons.mic,
+                    color: Colors.blue,
+                  ),
+                ],
+              )),
+        ),
+      ),
+    );
+  }
 }

@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:untitled16/widgets/LeagueContainer.dart';
+import '../folder01/stable_classes.dart';
 import 'TableScreen.dart';
 
 class LeaguePage extends StatefulWidget {
   static const String tag = 'LeaguePageRoute/';
+
+  const LeaguePage({super.key});
   @override
   _LeaguePageState createState() => _LeaguePageState();
 }

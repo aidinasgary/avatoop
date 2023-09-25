@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:untitled16/view/folder01/profile_screen.dart';
+import 'profile_screen.dart';
 
 // ignore: camel_case_types
 class login extends StatefulWidget {

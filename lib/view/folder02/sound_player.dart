@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:just_audio/just_audio.dart';
 import 'package:just_audio_background/just_audio_background.dart';
 import 'package:rxdart/rxdart.dart';
+import 'package:untitled16/desktop_body.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 
 class AudioPlayerScreen extends StatefulWidget {
   const AudioPlayerScreen({super.key});
@@ -60,7 +62,7 @@ class _AudioPlayerScreenState extends State<AudioPlayerScreen> {
   void initState() {
     super.initState();
     _init();
-    // _audioPlayer = AudioPlayer()..setAsset("assets/audio/Olsun_Hadise_320.mp3");
+    _audioPlayer = AudioPlayer()..setAsset("assets/audio/Olsun_Hadise_320.mp3");
   }
 
   Future<void> _init() async {
@@ -82,12 +84,17 @@ class _AudioPlayerScreenState extends State<AudioPlayerScreen> {
             backgroundColor: Colors.transparent,
             elevation: 0,
             leading: IconButton(
-                onPressed: () {},
-                icon: const Icon(Icons.keyboard_arrow_down_rounded)),
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const DesktopBody()));
+                },
+                icon: const Icon(Icons.keyboard_arrow_left_rounded)),
             actions: [
               IconButton(onPressed: () {}, icon: const Icon(Icons.more_horiz)),
             ]),
-        backgroundColor: Colors.purple,
+        backgroundColor: const Color(0xFF144771),
         body: Container(
           padding: const EdgeInsets.all(20),
           height: double.infinity,
@@ -162,10 +169,44 @@ class MediaMetadata extends StatelessWidget {
       required this.imageUrl,
       required this.title,
       required this.artist});
+
   @override
   Widget build(BuildContext context) {
-    return const Column(
-      children: [],
+    return Column(
+      children: [
+        DecoratedBox(
+          decoration: BoxDecoration(boxShadow: const [
+            BoxShadow(
+              color: Colors.black12,
+              offset: Offset(2, 4),
+              blurRadius: 4,
+            )
+          ], borderRadius: BorderRadius.circular(10)),
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(10),
+            child: CachedNetworkImage(
+              imageUrl: imageUrl,
+              height: 300,
+              width: 300,
+              fit: BoxFit.cover,
+            ),
+          ),
+        ),
+        const SizedBox(height: 20),
+        Text(title,
+            style: const TextStyle(
+              fontSize: 22,
+              color: Colors.white,
+              fontWeight: FontWeight.bold,
+            ),
+            textAlign: TextAlign.center),
+        Text(title,
+            style: const TextStyle(
+              fontSize: 20,
+              color: Colors.white,
+            ),
+            textAlign: TextAlign.center),
+      ],
     );
   }
 }

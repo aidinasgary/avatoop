@@ -40,7 +40,7 @@ class _TableScreenState extends State<TableScreen> {
                 child: Row(
                   children: [
                     team['position'].toString().length > 1
-                        ? Text(team['position'].toString() + ' - ')
+                        ? Text('${team['position']} - ')
                         : Text(" " + team['position'].toString() + ' - '),
                     Row(
                       children: [
@@ -50,10 +50,8 @@ class _TableScreenState extends State<TableScreen> {
                           width: 30,
                         ),
                         team['team']['name'].toString().length > 11
-                            ? Text(team['team']['name']
-                                    .toString()
-                                    .substring(0, 11) +
-                                '...')
+                            ? Text(
+                                '${team['team']['name'].toString().substring(0, 11)}...')
                             : Text(team['team']['name'].toString()),
                       ],
                     ),
@@ -91,7 +89,7 @@ class _TableScreenState extends State<TableScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return _table == null
+    return _table == []
         ? Container(
             color: Colors.white,
             child: const Center(

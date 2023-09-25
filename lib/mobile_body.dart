@@ -5,11 +5,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:internet_connection_checker/internet_connection_checker.dart';
-import 'package:untitled16/view/League_page.dart';
-import 'package:untitled16/view/folder02/TableScreen.dart';
 import 'package:untitled16/view/folder02/hot_news_page.dart';
+import 'package:untitled16/view/folder02/league_page.dart';
 import 'package:untitled16/view/folder02/sound_player.dart';
-import 'package:untitled16/widgets/custom_slider.dart';
 
 import 'view/folder01/stable_classes.dart';
 import 'view/folder02/new_page.dart';
@@ -37,7 +35,8 @@ class _MobileBodyState extends State<MobileBody> {
         (ConnectivityResult result) async {
           isDeviceConnected = await InternetConnectionChecker().hasConnection;
           if (!isDeviceConnected && isAlertSet == false) {
-            showDialogBox(context as BuildContext);
+            // ignore: use_build_context_synchronously
+            showDialogBox(context);
             setState(() => isAlertSet = true);
           }
         },
@@ -81,12 +80,12 @@ class _MobileBodyState extends State<MobileBody> {
                       scrollDirection: Axis.horizontal,
                       childrenDelegate: SliverChildListDelegate([
                         GestureDetector(
-                            onTap: () => Get.to(HotNewsPage()),
+                            onTap: () => Get.to(const HotNewsPage()),
                             child: _pages(0)),
                         GestureDetector(onTap: () => {}, child: _pages(1)),
                         GestureDetector(onTap: () {}, child: _pages(2)),
                         GestureDetector(
-                            onTap: () => Get.to(LeaguePage()),
+                            onTap: () => Get.to(const LeaguePage()),
                             child: _pages(3)),
                       ]),
                     ),
@@ -105,23 +104,23 @@ class _MobileBodyState extends State<MobileBody> {
                         ),
                         GestureDetector(
                           onTap: () {
-                            Get.to(HotNewsPage());
+                            Get.to(const HotNewsPage());
                           },
                           child: const Text(
                             'بیشتر',
                             style: TextStyle(
-                                fontSize: 20,
+                                fontSize: 15,
                                 fontWeight: FontWeight.w500,
                                 color: Colors.blue),
                           ),
                         ),
                         const Spacer(),
                         const Text(
-                          "اخبار داغ !",
+                          "    اخبار داغ !",
                           textDirection: TextDirection.rtl,
                           style: TextStyle(
                             // fontFamily: 'dubai',
-                            fontSize: 20,
+                            fontSize: 15,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
@@ -130,130 +129,52 @@ class _MobileBodyState extends State<MobileBody> {
                   ),
                   /////////////////////////////////////////////////////
                   // hot news text
+                  // this of two Containers that shows news
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
-                      Container(
-                        height: 350,
-                        width: size.height / 4.5,
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(15),
-                        ),
-                        child: Column(children: [
-                          SizedBox(
-                            height: 350,
-                            width: double.infinity,
-                            child: GestureDetector(
-                                onTap: () {
-                                  Get.to(const NewsPage());
-                                },
-                                child: HotNewsListView(size: size)),
-                          )
-                        ]),
+                      NewWidgetContainer(
+                        size: size,
+                        child: HotNewsListView(size: size),
                       ),
-                      // this of two Containers that shows news
-                      Container(
-                        height: 350,
-                        width: size.height / 4.5,
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(15),
-                        ),
-                        child: Column(children: [
-                          SizedBox(
-                            height: 350,
-                            width: double.infinity,
-                            child: HotNewsListView(size: size),
-                          )
-                        ]),
+                      NewWidgetContainer(
+                        size: size,
+                        child: HotNewsListView(size: size),
                       ),
                     ],
                   ),
                   //////////////////////////////////////////////////////////////
                   const SizedBox(height: 20),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      const Icon(
-                        Icons.keyboard_double_arrow_left_rounded,
-                        color: Colors.blue,
-                      ),
-                      GestureDetector(
-                        onTap: () {
-                          Get.to(TableScreen(code: 'PPL'));
-                        },
-                        child: const Text(
-                          'بیشتر',
-                          style: TextStyle(
-                              fontSize: 20,
-                              fontWeight: FontWeight.w500,
-                              color: Colors.blue),
-                        ),
-                      ),
-                      const Spacer(),
-                      const Text(
-                        " لیگ ایران ",
-                        textDirection: TextDirection.rtl,
-                        style: TextStyle(
-                          // fontFamily: 'dubai',
-                          fontSize: 20,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                    ],
+                  NewWidgetText(
+                    size: size,
+                    text: "بیشتر",
+                    subtitle: "       لیگ فرانسه ",
+                    icon: "    لیگ ایران",
                   ),
                   // Premier League standings
                   // ‌جدول رده بندی
-                  LeaugeScores(
-                    width: double.infinity,
-                    size: size,
-                    note: '',
-                    pic: '',
-                  ),
-                  const SizedBox(height: 20),
+
                   Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
-                      const Icon(
-                        Icons.keyboard_double_arrow_left_rounded,
-                        color: Colors.blue,
-                      ),
-                      GestureDetector(
-                        onTap: () {
-                          Get.to(LeaguePage());
-                        },
-                        child: const Text(
-                          'بیشتر',
-                          style: TextStyle(
-                              fontSize: 20,
-                              fontWeight: FontWeight.w500,
-                              color: Colors.blue),
-                        ),
-                      ),
-                      const Spacer(),
-                      const Text(
-                        "لیگ انگلستان ",
-                        textDirection: TextDirection.rtl,
-                        style: TextStyle(
-                          // fontFamily: 'dubai',
-                          fontSize: 20,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
+                      LeaugeWidget(size: size),
+                      LeaugeWidget(size: size),
                     ],
                   ),
-                  LeaugeScores(
-                    width: double.infinity,
+                  const SizedBox(height: 10),
+                  NewWidgetText(
                     size: size,
-                    note: '',
-                    pic: '',
+                    text: "بیشتر",
+                    subtitle: "لیگ آلمان ",
+                    icon: "    لیگ انگلستان",
                   ),
-                  //news text
-                  //  const MoreTitle(
-                  //    write: Text("اخبار صوتی"),
-                  //   ),
-
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      LeaugeWidget(size: size),
+                      LeaugeWidget(size: size),
+                    ],
+                  ),
                   Padding(
                     padding: const EdgeInsets.all(20.0),
                     child: Container(
@@ -364,21 +285,21 @@ class _MobileBodyState extends State<MobileBody> {
                                   ),
                                 ],
                               ),
-                              Text(
+                              const Text(
                                 'Avatoop.com',
                                 style: TextStyle(
                                     fontSize: 13,
                                     color: Colors.white,
                                     fontWeight: FontWeight.w400),
                               ),
-                              Text(
+                              const Text(
                                 'sarzaminhooshmand',
                                 style: TextStyle(
                                     fontSize: 13,
                                     color: Colors.white,
                                     fontWeight: FontWeight.w400),
                               ),
-                              Text(
+                              const Text(
                                 '09915957342',
                                 style: TextStyle(
                                     fontSize: 13,
@@ -387,7 +308,7 @@ class _MobileBodyState extends State<MobileBody> {
                               ),
                             ],
                           ),
-                          Column(
+                          const Column(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Text(
@@ -420,7 +341,7 @@ class _MobileBodyState extends State<MobileBody> {
                               ),
                             ],
                           ),
-                          Column(
+                          const Column(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Row(
@@ -433,7 +354,7 @@ class _MobileBodyState extends State<MobileBody> {
                                         fontWeight: FontWeight.w600),
                                   ),
                                   Padding(
-                                    padding: const EdgeInsets.all(8.0),
+                                    padding: EdgeInsets.all(8.0),
                                     child: Icon(
                                       Icons.sports_soccer,
                                       color: Colors.white,
@@ -442,28 +363,12 @@ class _MobileBodyState extends State<MobileBody> {
                                 ],
                               ),
                               Text(
-                                'آواتوپ، اولین وبسایت خبرگزاری صوتی',
-                                style: TextStyle(
-                                    fontSize: 10,
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.bold),
-                              ),
-                              Text(
-                                'ایران است که سعی دارد با استفاده',
-                                style: TextStyle(
-                                    fontSize: 10,
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.bold),
-                              ),
-                              Text(
-                                ' از هوش مصنوعی، راحتی شما را',
-                                style: TextStyle(
-                                    fontSize: 10,
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.bold),
-                              ),
-                              Text(
-                                'در شنیدن اخبار ورزشی فراهم نماید.',
+                                '''آواتوپ، اولین وبسایت خبرگزاری صوتی
+                                  ایران است که سعی دارد با استفاده
+                                  از هوش مصنوعی، راحتی شما را
+                                 
+                                  در شنیدن اخبار ورزشی فراهم نماید.
+                                ''',
                                 style: TextStyle(
                                     fontSize: 10,
                                     color: Colors.white,
@@ -500,6 +405,7 @@ class _MobileBodyState extends State<MobileBody> {
                 isDeviceConnected =
                     await InternetConnectionChecker().hasConnection;
                 if (!isDeviceConnected) {
+                  // ignore: use_build_context_synchronously
                   showDialogBox(context);
                   setState(() => isAlertSet = true);
                 }
@@ -509,45 +415,103 @@ class _MobileBodyState extends State<MobileBody> {
           ],
         ),
       );
-/*
-  ElevatedButton newMethod(BuildContext context) {
-    // var size = MediaQuery.of(context).size;
-    return ElevatedButton(
-        //
-        onPressed: () {
-          showModalBottomSheet(
-              context: context,
-              builder: (context) {
-                return SizedBox(
-                  height: 400,
-                  child: Column(
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Container(
-                          height: 300,
-                          width: double.infinity,
-                          decoration: BoxDecoration(
-                              color: Colors.purple,
-                              borderRadius: BorderRadius.circular(12)),
-                          child: const SizedBox(
-                              height: 200,
-                              width: double.infinity,
-                              child: AudioPlayerScreen()),
-                        ),
-                      ),
-                      ElevatedButton(
-                          onPressed: () {
-                            Navigator.pop(context);
-                          },
-                          child: const Text('Cluse')),
-                    ],
-                  ),
-                );
-              });
-        },
-        child: const Icon(Icons.play_arrow_rounded));
-  }*/
+}
+
+class NewWidgetText extends StatelessWidget {
+  const NewWidgetText({
+    super.key,
+    required this.size,
+    required this.text,
+    required this.subtitle,
+    required this.icon,
+  });
+
+  final Size size;
+  final String text;
+  final String subtitle;
+  final String icon;
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      children: [
+        Row(
+          children: [
+            const Icon(
+              Icons.keyboard_double_arrow_left_rounded,
+              color: Colors.blue,
+            ),
+            GestureDetector(
+              onTap: () {
+                Get.to(const LeaguePage());
+              },
+              child: Text(
+                text,
+                //  'بیشتر',
+                style: const TextStyle(
+                    fontSize: 15,
+                    fontWeight: FontWeight.w500,
+                    color: Colors.blue),
+              ),
+            ),
+          ],
+        ),
+        const Spacer(),
+        Text(
+          subtitle,
+          // "     لیگ فرانسه ",
+          textDirection: TextDirection.rtl,
+          style: const TextStyle(
+            // fontFamily: 'dubai',
+            fontSize: 15,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+        SizedBox(width: size.width / 3),
+        Text(
+          icon,
+          // "     لیگ ایران ",
+          textDirection: TextDirection.rtl,
+          style: const TextStyle(
+            // fontFamily: 'dubai',
+            fontSize: 15,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+      ],
+    );
+  }
+}
+
+class NewWidgetContainer extends StatelessWidget {
+  const NewWidgetContainer({
+    super.key,
+    required this.size,
+    this.child,
+  });
+
+  final Size size;
+  final dynamic child;
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Container(
+        height: 350,
+        width: size.height / 2.8,
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(10),
+        ),
+        child: GestureDetector(
+            onTap: () {
+              Get.to(const NewsPage());
+            },
+            child: child),
+      ),
+    );
+  }
 }
 
 Widget _pages(int index) {
